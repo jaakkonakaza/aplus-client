@@ -1,0 +1,39 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 517,
+      "url": "http://localhost:8000/api/v2/users/517",
+      "username": "student001",
+      "student_id": "s1000001",
+      "email": "student001@example.test",
+      "full_name": "Student 001",
+      "is_external": true,
+      "tag_slugs": [
+        "user-external",
+        "en",
+        "jaakko"
+      ],
+      "summary_html": "http://localhost:8000/test-course/master/teachers/participants/517",
+      "points": "http://localhost:8000/api/v2/courses/3/points/517",
+      "data": "http://localhost:8000/api/v2/courses/3/submissiondata/517"
+    },
+    {
+      "id": 518,
+      "url": "http://localhost:8000/api/v2/users/518",
+      "username": "student002",
+      "student_id": null,
+      "email": "student002@example.test",
+      "full_name": "Student 002",
+      "is_external": false,
+      "tag_slugs": [
+        "user-internal"
+      ],
+      "summary_html": "http://localhost:8000/test-course/master/teachers/participants/518",
+      "points": "http://localhost:8000/api/v2/courses/3/points/518",
+      "data": "http://localhost:8000/api/v2/courses/3/submissiondata/518"
+    }
+  ]
+}

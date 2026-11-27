@@ -1,0 +1,1394 @@
+public final class fi/aalto/cs/aplus/client/AplusBlockingClient : java/lang/AutoCloseable {
+	public static final field Companion Lfi/aalto/cs/aplus/client/AplusBlockingClient$Companion;
+	public fun <init> (Lfi/aalto/cs/aplus/client/AplusClient;)V
+	public fun <init> (Lfi/aalto/cs/aplus/client/AplusClient;J)V
+	public synthetic fun <init> (Lfi/aalto/cs/aplus/client/AplusClient;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun close ()V
+	public final fun course (J)Lfi/aalto/cs/aplus/client/dto/CourseDto;
+	public static final fun create (Ljava/lang/String;Ljava/util/function/Supplier;)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+	public static final fun create (Ljava/lang/String;Ljava/util/function/Supplier;Lfi/aalto/cs/aplus/client/AplusLimits;)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+	public static final fun create (Ljava/lang/String;Ljava/util/function/Supplier;Lfi/aalto/cs/aplus/client/AplusLimits;J)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+	public final fun createGradedSubmission (JLfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest;)V
+	public final fun exercise (J)Lfi/aalto/cs/aplus/client/dto/ExerciseDto;
+	public final fun exerciseModules (J)Ljava/util/List;
+	public final fun exerciseSubmissionData (JJ)Ljava/util/List;
+	public final fun exerciseSubmissionData (JJZ)Ljava/util/List;
+	public static synthetic fun exerciseSubmissionData$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JJZILjava/lang/Object;)Ljava/util/List;
+	public final fun exerciseSubmissions (J)Ljava/util/List;
+	public final fun exerciseSubmissions (JLjava/lang/String;)Ljava/util/List;
+	public final fun exerciseSubmissions (JLjava/lang/String;I)Ljava/util/List;
+	public static synthetic fun exerciseSubmissions$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JLjava/lang/String;IILjava/lang/Object;)Ljava/util/List;
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getLimits ()Lfi/aalto/cs/aplus/client/AplusLimits;
+	public final fun getTimeoutMillis ()J
+	public final fun latestExerciseSubmissions (J)Ljava/util/List;
+	public final fun latestExerciseSubmissions (JLjava/lang/String;)Ljava/util/List;
+	public final fun latestExerciseSubmissions (JLjava/lang/String;I)Ljava/util/List;
+	public static synthetic fun latestExerciseSubmissions$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JLjava/lang/String;IILjava/lang/Object;)Ljava/util/List;
+	public final fun me ()Lfi/aalto/cs/aplus/client/dto/UserDto;
+	public final fun myGroups (J)Ljava/util/List;
+	public final fun news (J)Ljava/util/List;
+	public final fun points (J)Lfi/aalto/cs/aplus/client/dto/PointsDto;
+	public final fun points (JLjava/lang/String;)Lfi/aalto/cs/aplus/client/dto/PointsDto;
+	public static synthetic fun points$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JLjava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/PointsDto;
+	public final fun readBytes (Ljava/lang/String;)[B
+	public final fun readBytes (Ljava/lang/String;I)[B
+	public final fun readBytes (Ljava/lang/String;II)[B
+	public static synthetic fun readBytes$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;Ljava/lang/String;IIILjava/lang/Object;)[B
+	public final fun readJson (Ljava/lang/String;Lkotlinx/serialization/DeserializationStrategy;)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public final fun readJson (Ljava/lang/String;Lkotlinx/serialization/DeserializationStrategy;I)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public static synthetic fun readJson$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;Ljava/lang/String;Lkotlinx/serialization/DeserializationStrategy;IILjava/lang/Object;)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public final fun readText (Ljava/lang/String;)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public final fun readText (Ljava/lang/String;I)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public final fun readText (Ljava/lang/String;II)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public static synthetic fun readText$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;Ljava/lang/String;IIILjava/lang/Object;)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public final fun students (J)Ljava/util/List;
+	public final fun students (JLfi/aalto/cs/aplus/client/dto/StudentField;)Ljava/util/List;
+	public final fun students (JLfi/aalto/cs/aplus/client/dto/StudentField;Ljava/util/Collection;)Ljava/util/List;
+	public final fun students (JLfi/aalto/cs/aplus/client/dto/StudentField;Ljava/util/Collection;Ljava/lang/String;)Ljava/util/List;
+	public final fun students (JLfi/aalto/cs/aplus/client/dto/StudentField;Ljava/util/Collection;Ljava/lang/String;I)Ljava/util/List;
+	public static synthetic fun students$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JLfi/aalto/cs/aplus/client/dto/StudentField;Ljava/util/Collection;Ljava/lang/String;IILjava/lang/Object;)Ljava/util/List;
+	public final fun submission (J)Lfi/aalto/cs/aplus/client/dto/SubmissionDto;
+	public final fun submissionData (J)Ljava/util/List;
+	public final fun submissionData (JLjava/lang/String;)Ljava/util/List;
+	public final fun submissionData (JLjava/lang/String;Z)Ljava/util/List;
+	public static synthetic fun submissionData$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JLjava/lang/String;ZILjava/lang/Object;)Ljava/util/List;
+	public final fun submissionFile (JJ)[B
+	public final fun submissionFile (JJI)[B
+	public static synthetic fun submissionFile$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JJIILjava/lang/Object;)[B
+	public final fun submit (JLjava/util/List;)Lfi/aalto/cs/aplus/client/SubmitResult;
+	public final fun submit (JLjava/util/List;J)Lfi/aalto/cs/aplus/client/SubmitResult;
+	public final fun submit (JLjava/util/List;JLjava/lang/String;)Lfi/aalto/cs/aplus/client/SubmitResult;
+	public static synthetic fun submit$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JLjava/util/List;JLjava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/SubmitResult;
+	public final fun user (J)Lfi/aalto/cs/aplus/client/dto/UserDto;
+	public final fun userSearch (Ljava/lang/String;)Ljava/util/List;
+	public final fun userSearch (Ljava/lang/String;I)Ljava/util/List;
+	public static synthetic fun userSearch$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;Ljava/lang/String;IILjava/lang/Object;)Ljava/util/List;
+	public final fun usertags (J)Ljava/util/List;
+	public final fun usertags (JI)Ljava/util/List;
+	public static synthetic fun usertags$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient;JIILjava/lang/Object;)Ljava/util/List;
+	public final fun withLimits (Lfi/aalto/cs/aplus/client/AplusLimits;)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+	public final fun withToken (Ljava/lang/String;)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusBlockingClient$Companion {
+	public final fun create (Ljava/lang/String;Ljava/util/function/Supplier;)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+	public final fun create (Ljava/lang/String;Ljava/util/function/Supplier;Lfi/aalto/cs/aplus/client/AplusLimits;)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+	public final fun create (Ljava/lang/String;Ljava/util/function/Supplier;Lfi/aalto/cs/aplus/client/AplusLimits;J)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+	public static synthetic fun create$default (Lfi/aalto/cs/aplus/client/AplusBlockingClient$Companion;Ljava/lang/String;Ljava/util/function/Supplier;Lfi/aalto/cs/aplus/client/AplusLimits;JILjava/lang/Object;)Lfi/aalto/cs/aplus/client/AplusBlockingClient;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusClient : java/lang/AutoCloseable {
+	public static final field Companion Lfi/aalto/cs/aplus/client/AplusClient$Companion;
+	public static final field SUBMIT_ALONE_GROUP_ID J
+	public static final field TOKEN_SCHEME Ljava/lang/String;
+	public fun <init> (Lio/ktor/client/HttpClient;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ZLfi/aalto/cs/aplus/client/AplusLimits;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (Lio/ktor/client/HttpClient;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ZLfi/aalto/cs/aplus/client/AplusLimits;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun close ()V
+	public final fun course (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun create (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lfi/aalto/cs/aplus/client/AplusClient;
+	public static final fun create (Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lfi/aalto/cs/aplus/client/AplusLimits;)Lfi/aalto/cs/aplus/client/AplusClient;
+	public static final fun create (Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lfi/aalto/cs/aplus/client/AplusLimits;Lkotlin/jvm/functions/Function1;)Lfi/aalto/cs/aplus/client/AplusClient;
+	public final fun createGradedSubmission (JLfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun exercise (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun exerciseModules (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun exerciseSubmissionData (JJZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun exerciseSubmissionData$default (Lfi/aalto/cs/aplus/client/AplusClient;JJZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun exerciseSubmissions (JLjava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun exerciseSubmissions$default (Lfi/aalto/cs/aplus/client/AplusClient;JLjava/lang/String;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getHttpClient ()Lio/ktor/client/HttpClient;
+	public final fun getLimits ()Lfi/aalto/cs/aplus/client/AplusLimits;
+	public final fun latestExerciseSubmissions (JLjava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun latestExerciseSubmissions$default (Lfi/aalto/cs/aplus/client/AplusClient;JLjava/lang/String;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun me (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun myGroups (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun news (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun points (JLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun points$default (Lfi/aalto/cs/aplus/client/AplusClient;JLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun readBytes (Ljava/lang/String;IILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun readBytes$default (Lfi/aalto/cs/aplus/client/AplusClient;Ljava/lang/String;IILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun readJson (Ljava/lang/String;Lkotlinx/serialization/DeserializationStrategy;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun readJson$default (Lfi/aalto/cs/aplus/client/AplusClient;Ljava/lang/String;Lkotlinx/serialization/DeserializationStrategy;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun readText (Ljava/lang/String;IILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun readText$default (Lfi/aalto/cs/aplus/client/AplusClient;Ljava/lang/String;IILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun students (JLfi/aalto/cs/aplus/client/dto/StudentField;Ljava/util/Collection;Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun students$default (Lfi/aalto/cs/aplus/client/AplusClient;JLfi/aalto/cs/aplus/client/dto/StudentField;Ljava/util/Collection;Ljava/lang/String;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun submission (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun submissionData (JLjava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun submissionData$default (Lfi/aalto/cs/aplus/client/AplusClient;JLjava/lang/String;ZLkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun submissionFile (JJILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun submissionFile$default (Lfi/aalto/cs/aplus/client/AplusClient;JJILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun submit (JLjava/util/List;JLjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun submit$default (Lfi/aalto/cs/aplus/client/AplusClient;JLjava/util/List;JLjava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun user (JLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun userSearch (Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun userSearch$default (Lfi/aalto/cs/aplus/client/AplusClient;Ljava/lang/String;ILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun usertags (JILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun usertags$default (Lfi/aalto/cs/aplus/client/AplusClient;JILkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun withLimits (Lfi/aalto/cs/aplus/client/AplusLimits;)Lfi/aalto/cs/aplus/client/AplusClient;
+	public final fun withToken (Ljava/lang/String;)Lfi/aalto/cs/aplus/client/AplusClient;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusClient$Companion {
+	public final fun create (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lfi/aalto/cs/aplus/client/AplusClient;
+	public final fun create (Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lfi/aalto/cs/aplus/client/AplusLimits;)Lfi/aalto/cs/aplus/client/AplusClient;
+	public final fun create (Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lfi/aalto/cs/aplus/client/AplusLimits;Lkotlin/jvm/functions/Function1;)Lfi/aalto/cs/aplus/client/AplusClient;
+	public static synthetic fun create$default (Lfi/aalto/cs/aplus/client/AplusClient$Companion;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lfi/aalto/cs/aplus/client/AplusLimits;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/AplusClient;
+	public final fun normalizeBaseUrl (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusClientKt {
+	public static final fun aplusDefaults (Lio/ktor/client/HttpClientConfig;)V
+}
+
+public abstract class fi/aalto/cs/aplus/client/AplusException : java/lang/RuntimeException {
+	public static final field Companion Lfi/aalto/cs/aplus/client/AplusException$Companion;
+	public synthetic fun <init> (Lio/ktor/http/HttpStatusCode;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getStatus ()Lio/ktor/http/HttpStatusCode;
+	public final fun getUrl ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusException$Companion {
+	public final fun of (Lio/ktor/http/HttpStatusCode;Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/AplusException;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusException$Forbidden : fi/aalto/cs/aplus/client/AplusException {
+	public fun <init> (Lio/ktor/http/HttpStatusCode;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class fi/aalto/cs/aplus/client/AplusException$Http : fi/aalto/cs/aplus/client/AplusException {
+	public fun <init> (Lio/ktor/http/HttpStatusCode;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class fi/aalto/cs/aplus/client/AplusException$LimitExceeded : fi/aalto/cs/aplus/client/AplusException {
+	public fun <init> (Lio/ktor/http/HttpStatusCode;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class fi/aalto/cs/aplus/client/AplusException$Malformed : fi/aalto/cs/aplus/client/AplusException {
+	public fun <init> (Lio/ktor/http/HttpStatusCode;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+}
+
+public final class fi/aalto/cs/aplus/client/AplusException$NotFound : fi/aalto/cs/aplus/client/AplusException {
+	public fun <init> (Lio/ktor/http/HttpStatusCode;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class fi/aalto/cs/aplus/client/AplusException$Pagination : fi/aalto/cs/aplus/client/AplusException {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public final class fi/aalto/cs/aplus/client/AplusException$Unauthorized : fi/aalto/cs/aplus/client/AplusException {
+	public fun <init> (Lio/ktor/http/HttpStatusCode;Ljava/lang/String;Ljava/lang/String;)V
+}
+
+public final class fi/aalto/cs/aplus/client/AplusJson {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/AplusJson;
+	public final fun getDefault ()Lkotlinx/serialization/json/Json;
+	public final fun getVerbatim ()Lkotlinx/serialization/json/Json;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusLimits {
+	public fun <init> ()V
+	public fun <init> (IIJIII)V
+	public synthetic fun <init> (IIJIIIILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()J
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun copy (IIJIII)Lfi/aalto/cs/aplus/client/AplusLimits;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/AplusLimits;IIJIIIILjava/lang/Object;)Lfi/aalto/cs/aplus/client/AplusLimits;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMaxConcurrentPages ()I
+	public final fun getMaxErrorBytes ()I
+	public final fun getMaxPages ()I
+	public final fun getMaxPaginationBytes ()J
+	public final fun getMaxResponseBytes ()I
+	public final fun getMaxResults ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public final fun withMaxConcurrentPages (I)Lfi/aalto/cs/aplus/client/AplusLimits;
+	public final fun withMaxErrorBytes (I)Lfi/aalto/cs/aplus/client/AplusLimits;
+	public final fun withMaxPages (I)Lfi/aalto/cs/aplus/client/AplusLimits;
+	public final fun withMaxPaginationBytes (J)Lfi/aalto/cs/aplus/client/AplusLimits;
+	public final fun withMaxResponseBytes (I)Lfi/aalto/cs/aplus/client/AplusLimits;
+	public final fun withMaxResults (I)Lfi/aalto/cs/aplus/client/AplusLimits;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusResponse {
+	public fun <init> (Ljava/lang/Object;Ljava/lang/String;I)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()I
+	public final fun copy (Ljava/lang/Object;Ljava/lang/String;I)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/AplusResponse;Ljava/lang/Object;Ljava/lang/String;IILjava/lang/Object;)Lfi/aalto/cs/aplus/client/AplusResponse;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBodyBytes ()I
+	public final fun getRequestUrl ()Ljava/lang/String;
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/client/AplusUrlException : java/lang/IllegalArgumentException {
+	public final fun getUrl ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/client/LocalizedString {
+	public static final field Companion Lfi/aalto/cs/aplus/client/LocalizedString$Companion;
+	public static final field DEFAULT_LANGUAGE Ljava/lang/String;
+	public static final synthetic fun box-impl (Ljava/lang/String;)Lfi/aalto/cs/aplus/client/LocalizedString;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public final fun getRaw ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public static final fun pick-impl (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/client/LocalizedString$Companion {
+}
+
+public final class fi/aalto/cs/aplus/client/SubmissionFile {
+	public fun <init> (Ljava/lang/String;Ljava/io/File;)V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;[B)V
+	public final fun getContent ()[B
+	public final fun getFieldName ()Ljava/lang/String;
+	public final fun getFileName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/client/SubmitResult {
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/util/List;)Lfi/aalto/cs/aplus/client/SubmitResult;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/SubmitResult;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/SubmitResult;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getErrors ()Ljava/util/List;
+	public final fun getLocation ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/CourseBriefDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/CourseBriefDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getHtmlUrl ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getInstanceName ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/CourseBriefDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/CourseBriefDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/CourseBriefDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/CourseDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/CourseDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Z
+	public final fun component11 ()Z
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Ljava/lang/String;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Ljava/lang/String;
+	public final fun component18 ()Ljava/lang/String;
+	public final fun component19 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()Ljava/lang/String;
+	public final fun component21 ()Ljava/lang/String;
+	public final fun component22 ()Ljava/lang/String;
+	public final fun component23 ()Ljava/lang/String;
+	public final fun component24 ()Ljava/lang/String;
+	public final fun component25 ()Ljava/lang/String;
+	public final fun component26 ()Ljava/lang/String;
+	public final fun component27 ()Ljava/lang/String;
+	public final fun component28 ()Ljava/lang/String;
+	public final fun component29 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/CourseDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/CourseDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/CourseDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAggregateData ()Ljava/lang/String;
+	public final fun getBestResultsData ()Ljava/lang/String;
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getData ()Ljava/lang/String;
+	public final fun getEndingTime ()Ljava/lang/String;
+	public final fun getExercises ()Ljava/lang/String;
+	public final fun getGroupWorkAllowed ()Z
+	public final fun getGroups ()Ljava/lang/String;
+	public final fun getHtmlUrl ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getImage ()Ljava/lang/String;
+	public final fun getInstanceName ()Ljava/lang/String;
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getMyData ()Ljava/lang/String;
+	public final fun getMyGroups ()Ljava/lang/String;
+	public final fun getMyPoints ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getNews ()Ljava/lang/String;
+	public final fun getPendingSubmissionsData ()Ljava/lang/String;
+	public final fun getPoints ()Ljava/lang/String;
+	public final fun getResultsData ()Ljava/lang/String;
+	public final fun getStartingTime ()Ljava/lang/String;
+	public final fun getStatistics ()Ljava/lang/String;
+	public final fun getStudents ()Ljava/lang/String;
+	public final fun getTaggings ()Ljava/lang/String;
+	public final fun getTree ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getUsertags ()Ljava/lang/String;
+	public final fun getVisibleToStudents ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/CourseDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/CourseDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/CourseDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/CourseDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/CourseDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/ExerciseBriefDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/ExerciseBriefDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Z)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Z
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Z)Lfi/aalto/cs/aplus/client/dto/ExerciseBriefDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/ExerciseBriefDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/ExerciseBriefDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDifficulty ()Ljava/lang/String;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getHasSubmittableFiles ()Z
+	public final fun getHierarchicalName ()Ljava/lang/String;
+	public final fun getHtmlUrl ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getMaxPoints ()I
+	public final fun getMaxSubmissions ()I
+	public final fun getSubmissionLimit ()Ljava/lang/Integer;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/ExerciseBriefDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/ExerciseBriefDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/ExerciseBriefDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/ExerciseBriefDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/ExerciseBriefDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/ExerciseDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/ExerciseDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;ZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;ZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;
+	public final fun component11 ()Z
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/Integer;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;
+	public final fun component16 ()Ljava/lang/String;
+	public final fun component17 ()Ljava/lang/String;
+	public final fun component18 ()Ljava/lang/String;
+	public final fun component19 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component20 ()Ljava/lang/String;
+	public final fun component21 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;ZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/ExerciseDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/ExerciseDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;ZLjava/lang/String;Ljava/lang/Integer;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/ExerciseDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getConsecutiveOrder ()Ljava/lang/Integer;
+	public final fun getCourse ()Lfi/aalto/cs/aplus/client/dto/CourseBriefDto;
+	public final fun getDifficulty ()Ljava/lang/String;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getExerciseInfo ()Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;
+	public final fun getHierarchicalName ()Ljava/lang/String;
+	public final fun getHtmlUrl ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getMaxPoints ()I
+	public final fun getMaxSubmissions ()I
+	public final fun getMyStats ()Ljava/lang/String;
+	public final fun getMySubmissions ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getParentName ()Ljava/lang/String;
+	public final fun getPostUrl ()Ljava/lang/String;
+	public final fun getStatistics ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/String;
+	public final fun getSubmissions ()Ljava/lang/String;
+	public final fun getTemplates ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isSubmittable ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/ExerciseDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/ExerciseDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/ExerciseDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/ExerciseDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/ExerciseDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/ExerciseInfoDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/List;Ljava/util/Map;)Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;Ljava/util/List;Ljava/util/Map;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun fileFields ()Ljava/util/List;
+	public final fun fileFieldsByLanguage ()Ljava/util/Map;
+	public final fun getFormI18n ()Ljava/util/Map;
+	public final fun getFormSpec ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/ExerciseInfoDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/ExerciseInfoDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/ExerciseInfoDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/ExerciseModuleDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/ExerciseModuleDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)Lfi/aalto/cs/aplus/client/dto/ExerciseModuleDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/ExerciseModuleDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/ExerciseModuleDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getClosingTime ()Ljava/lang/String;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getExercises ()Ljava/util/List;
+	public final fun getHtmlUrl ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getOpeningTime ()Ljava/lang/String;
+	public final fun getReadingOpeningTime ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isHidden ()Z
+	public final fun isOpen ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/ExerciseModuleDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/ExerciseModuleDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/ExerciseModuleDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/ExerciseModuleDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/ExerciseModuleDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/FormSpecFieldDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/FormSpecFieldDto$Companion;
+	public static final field I18N_PREFIX Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lfi/aalto/cs/aplus/client/dto/FormSpecFieldDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/FormSpecFieldDto;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/FormSpecFieldDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFilename ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public final fun getRequired ()Z
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/FormSpecFieldDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/FormSpecFieldDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/FormSpecFieldDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/FormSpecFieldDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/FormSpecFieldDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/GradeSubmissionRequest {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest$Companion;
+	public fun <init> (Ljava/util/List;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/util/List;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()I
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/List;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest;Ljava/util/List;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAssistantFeedback ()Ljava/lang/String;
+	public final fun getFeedback ()Ljava/lang/String;
+	public final fun getPoints ()I
+	public final fun getStudentsByUserId ()Ljava/util/List;
+	public final fun getSubmissionTime ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/GradeSubmissionRequest$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/GradeSubmissionRequest;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/GradeSubmissionRequest$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/GroupDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/GroupDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/util/List;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/util/List;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/util/List;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/GroupDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/GroupDto;JLjava/lang/String;Ljava/util/List;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/GroupDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()J
+	public final fun getMembers ()Ljava/util/List;
+	public final fun getTimestamp ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/GroupDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/GroupDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/GroupDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/GroupDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/GroupDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/GroupMemberDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/GroupMemberDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/GroupMemberDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/GroupMemberDto;JLjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/GroupMemberDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFullName ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getUserIdOrNull ()Ljava/lang/Long;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/GroupMemberDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/GroupMemberDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/GroupMemberDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/GroupMemberDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/GroupMemberDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/LocalizedFileField {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/LocalizedFileField;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/LocalizedFileField;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/LocalizedFileField;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFilename ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/NewsItemDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/NewsItemDto$Companion;
+	public static final field LANGUAGE_ALL Ljava/lang/String;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Z)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun appliesTo (Ljava/lang/String;)Z
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()I
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Z
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Z)Lfi/aalto/cs/aplus/client/dto/NewsItemDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/NewsItemDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;ZILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/NewsItemDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAudience ()I
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getPin ()Z
+	public final fun getPublish ()Ljava/lang/String;
+	public final fun getTitle ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/NewsItemDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/NewsItemDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/NewsItemDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/NewsItemDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/NewsItemDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/PointsDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/PointsDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;ILjava/util/Map;IILjava/util/Map;Ljava/util/List;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;ILjava/util/Map;IILjava/util/Map;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun allExercises ()Ljava/util/List;
+	public final fun component1 ()J
+	public final fun component10 ()I
+	public final fun component11 ()Ljava/util/Map;
+	public final fun component12 ()I
+	public final fun component13 ()I
+	public final fun component14 ()Ljava/util/Map;
+	public final fun component15 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Z
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;ILjava/util/Map;IILjava/util/Map;Ljava/util/List;)Lfi/aalto/cs/aplus/client/dto/PointsDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/PointsDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;ILjava/util/Map;IILjava/util/Map;Ljava/util/List;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/PointsDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getFullName ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getMaxPoints ()I
+	public final fun getMaxPointsByDifficulty ()Ljava/util/Map;
+	public final fun getModules ()Ljava/util/List;
+	public final fun getPoints ()I
+	public final fun getPointsByDifficulty ()Ljava/util/Map;
+	public final fun getRole ()Ljava/lang/String;
+	public final fun getStudentId ()Ljava/lang/String;
+	public final fun getSubmissionCount ()I
+	public final fun getTags ()Ljava/util/List;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getUsername ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isExternal ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/PointsDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/PointsDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/PointsDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/PointsDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/PointsDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/PointsExerciseDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/PointsExerciseDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIIZZLjava/lang/String;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIIZZLjava/lang/String;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Z
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/util/List;
+	public final fun component13 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()I
+	public final fun component9 ()Z
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIIZZLjava/lang/String;Ljava/util/List;Ljava/util/List;)Lfi/aalto/cs/aplus/client/dto/PointsExerciseDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/PointsExerciseDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIIZZLjava/lang/String;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/PointsExerciseDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBestSubmission ()Ljava/lang/String;
+	public final fun getDifficulty ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getMaxPoints ()I
+	public final fun getName ()Ljava/lang/String;
+	public final fun getOfficial ()Z
+	public final fun getPassed ()Z
+	public final fun getPoints ()I
+	public final fun getPointsToPass ()I
+	public final fun getResolvedBestSubmissionId ()Ljava/lang/Long;
+	public final fun getSubmissionCount ()I
+	public final fun getSubmissions ()Ljava/util/List;
+	public final fun getSubmissionsWithPoints ()Ljava/util/List;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/PointsExerciseDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/PointsExerciseDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/PointsExerciseDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/PointsExerciseDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/PointsExerciseDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/PointsModuleDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/PointsModuleDto$Companion;
+	public fun <init> (JLjava/lang/String;IIIILjava/util/Map;ZLjava/util/List;)V
+	public synthetic fun <init> (JLjava/lang/String;IIIILjava/util/Map;ZLjava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()Ljava/util/Map;
+	public final fun component8 ()Z
+	public final fun component9 ()Ljava/util/List;
+	public final fun copy (JLjava/lang/String;IIIILjava/util/Map;ZLjava/util/List;)Lfi/aalto/cs/aplus/client/dto/PointsModuleDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/PointsModuleDto;JLjava/lang/String;IIIILjava/util/Map;ZLjava/util/List;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/PointsModuleDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getExercises ()Ljava/util/List;
+	public final fun getId ()J
+	public final fun getMaxPoints ()I
+	public final fun getName ()Ljava/lang/String;
+	public final fun getPassed ()Z
+	public final fun getPoints ()I
+	public final fun getPointsByDifficulty ()Ljava/util/Map;
+	public final fun getPointsToPass ()I
+	public final fun getSubmissionCount ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/PointsModuleDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/PointsModuleDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/PointsModuleDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/PointsModuleDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/PointsModuleDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/StudentDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/StudentDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Z
+	public final fun component8 ()Ljava/util/List;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/StudentDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/StudentDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/StudentDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/String;
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getFullName ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getPoints ()Ljava/lang/String;
+	public final fun getStudentId ()Ljava/lang/String;
+	public final fun getSummaryHtml ()Ljava/lang/String;
+	public final fun getTagSlugs ()Ljava/util/List;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getUsername ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isExternal ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/StudentDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/StudentDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/StudentDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/StudentDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/StudentDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/StudentField : java/lang/Enum {
+	public static final field EMAIL Lfi/aalto/cs/aplus/client/dto/StudentField;
+	public static final field ID Lfi/aalto/cs/aplus/client/dto/StudentField;
+	public static final field STUDENT_ID Lfi/aalto/cs/aplus/client/dto/StudentField;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/StudentField;
+	public static fun values ()[Lfi/aalto/cs/aplus/client/dto/StudentField;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionBriefDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/SubmissionBriefDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;I)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()I
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;I)Lfi/aalto/cs/aplus/client/dto/SubmissionBriefDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/SubmissionBriefDto;JLjava/lang/String;Ljava/lang/String;IILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/SubmissionBriefDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGrade ()I
+	public final fun getId ()J
+	public final fun getSubmissionTime ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/SubmissionBriefDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/SubmissionBriefDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/SubmissionBriefDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/SubmissionBriefDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionBriefDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionDataKt {
+	public static final fun groupedBySubmission (Ljava/util/List;)Ljava/util/Map;
+	public static final fun submitterIdsBySubmission (Ljava/util/List;)Ljava/util/Map;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionDataRowDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/SubmissionDataRowDto$Companion;
+	public fun <init> (JJJLjava/lang/String;ILjava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZ)V
+	public synthetic fun <init> (JJJLjava/lang/String;ILjava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Ljava/lang/String;
+	public final fun component15 ()Z
+	public final fun component16 ()Z
+	public final fun component2 ()J
+	public final fun component3 ()J
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()I
+	public final fun component6 ()Ljava/lang/Double;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (JJJLjava/lang/String;ILjava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZ)Lfi/aalto/cs/aplus/client/dto/SubmissionDataRowDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/SubmissionDataRowDto;JJJLjava/lang/String;ILjava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/SubmissionDataRowDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCategory ()Ljava/lang/String;
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getExercise ()Ljava/lang/String;
+	public final fun getExerciseId ()J
+	public final fun getGrade ()I
+	public final fun getGradedTime ()Ljava/lang/String;
+	public final fun getGraderEmail ()Ljava/lang/String;
+	public final fun getNotificationSeen ()Z
+	public final fun getNotified ()Z
+	public final fun getPenalty ()Ljava/lang/Double;
+	public final fun getStatus ()Ljava/lang/String;
+	public final fun getStudentId ()Ljava/lang/String;
+	public final fun getSubmissionId ()J
+	public final fun getTags ()Ljava/lang/String;
+	public final fun getTime ()Ljava/lang/String;
+	public final fun getUserId ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/SubmissionDataRowDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/SubmissionDataRowDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/SubmissionDataRowDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/SubmissionDataRowDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionDataRowDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/SubmissionDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;Ljava/util/List;Ljava/util/List;Lfi/aalto/cs/aplus/client/dto/UserBriefDto;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;Ljava/util/List;Ljava/util/List;Lfi/aalto/cs/aplus/client/dto/UserBriefDto;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component11 ()Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;
+	public final fun component12 ()Ljava/util/List;
+	public final fun component13 ()Ljava/util/List;
+	public final fun component14 ()Lfi/aalto/cs/aplus/client/dto/UserBriefDto;
+	public final fun component15 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component16 ()Lkotlinx/serialization/json/JsonElement;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()I
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/Double;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;Ljava/util/List;Ljava/util/List;Lfi/aalto/cs/aplus/client/dto/UserBriefDto;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;)Lfi/aalto/cs/aplus/client/dto/SubmissionDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/SubmissionDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/Double;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;Ljava/util/List;Ljava/util/List;Lfi/aalto/cs/aplus/client/dto/UserBriefDto;Lkotlinx/serialization/json/JsonElement;Lkotlinx/serialization/json/JsonElement;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/SubmissionDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAssistantFeedback ()Ljava/lang/String;
+	public final fun getExercise ()Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;
+	public final fun getFeedback ()Ljava/lang/String;
+	public final fun getFeedbackRevealed ()Z
+	public final fun getFiles ()Ljava/util/List;
+	public final fun getGrade ()I
+	public final fun getGrader ()Lfi/aalto/cs/aplus/client/dto/UserBriefDto;
+	public final fun getGradingData ()Lkotlinx/serialization/json/JsonElement;
+	public final fun getGradingTime ()Ljava/lang/String;
+	public final fun getHtmlUrl ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getLatePenaltyApplied ()Ljava/lang/Double;
+	public final fun getStatus ()Ljava/lang/String;
+	public final fun getSubmissionData ()Lkotlinx/serialization/json/JsonElement;
+	public final fun getSubmissionTime ()Ljava/lang/String;
+	public final fun getSubmitters ()Ljava/util/List;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/SubmissionDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/SubmissionDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/SubmissionDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/SubmissionDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionExerciseDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDifficulty ()Ljava/lang/String;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getHierarchicalName ()Ljava/lang/String;
+	public final fun getHtmlUrl ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getMaxPoints ()I
+	public final fun getMaxSubmissions ()I
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/SubmissionExerciseDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/SubmissionExerciseDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionExerciseDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionStatusDto : java/lang/Enum {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto$Companion;
+	public static final field ERROR Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+	public static final field INITIALIZED Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+	public static final field INVALIDATED Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+	public static final field READY Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+	public static final field REJECTED Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+	public static final field UNOFFICIAL Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+	public static final field WAITING Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public final fun getValue ()Ljava/lang/String;
+	public static fun valueOf (Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+	public static fun values ()[Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmissionStatusDto$Companion {
+	public final fun isKnown (Ljava/lang/String;)Z
+	public final fun parse (Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/SubmissionStatusDto;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmittedFileDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/SubmittedFileDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/client/dto/SubmittedFileDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/SubmittedFileDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/SubmittedFileDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFilename ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getParamName ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/SubmittedFileDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/SubmittedFileDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/SubmittedFileDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/SubmittedFileDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/SubmittedFileDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/UserBriefDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/UserBriefDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Z
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lfi/aalto/cs/aplus/client/dto/UserBriefDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/UserBriefDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/UserBriefDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getFullName ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getStudentId ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getUsername ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isExternal ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/UserBriefDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/UserBriefDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/UserBriefDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/UserBriefDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/UserBriefDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/UserDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/UserDto$Companion;
+	public fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun component10 ()Ljava/util/List;
+	public final fun component11 ()Ljava/util/List;
+	public final fun component12 ()Ljava/util/List;
+	public final fun component13 ()Ljava/util/List;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Z
+	public final fun copy (JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;)Lfi/aalto/cs/aplus/client/dto/UserDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/UserDto;JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/util/List;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/UserDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAssistantCourses ()Ljava/util/List;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getEmail ()Ljava/lang/String;
+	public final fun getEnrolledCourses ()Ljava/util/List;
+	public final fun getFirstName ()Ljava/lang/String;
+	public final fun getFullName ()Ljava/lang/String;
+	public final fun getId ()J
+	public final fun getLastName ()Ljava/lang/String;
+	public final fun getStaffCourses ()Ljava/util/List;
+	public final fun getStudentId ()Ljava/lang/String;
+	public final fun getTeacherCourses ()Ljava/util/List;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getUsername ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isExternal ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/UserDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/UserDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/UserDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/UserDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/UserDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/UserTagDto {
+	public static final field Companion Lfi/aalto/cs/aplus/client/dto/UserTagDto$Companion;
+	public fun <init> (Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;ZLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Long;
+	public final fun component10 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Z
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Ljava/lang/String;
+	public final fun component9 ()Z
+	public final fun copy (Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;ZLjava/lang/String;)Lfi/aalto/cs/aplus/client/dto/UserTagDto;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/client/dto/UserTagDto;Ljava/lang/Long;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLjava/lang/String;Ljava/lang/String;ZLjava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/client/dto/UserTagDto;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getColor ()Ljava/lang/String;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getFontColor ()Ljava/lang/String;
+	public final fun getFontWhite ()Z
+	public final fun getId ()Ljava/lang/Long;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSlug ()Ljava/lang/String;
+	public final fun getTaggings ()Ljava/lang/String;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getVisibleToStudents ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/client/dto/UserTagDto$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/client/dto/UserTagDto$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/client/dto/UserTagDto;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/client/dto/UserTagDto;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/client/dto/UserTagDto$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+

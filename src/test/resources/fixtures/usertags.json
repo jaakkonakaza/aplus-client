@@ -1,0 +1,55 @@
+{
+  "count": 4,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": null,
+      "url": null,
+      "slug": "user-internal",
+      "name": "internal",
+      "description": "The user has the local organization listed as their organization.",
+      "visible_to_students": true,
+      "color": "#006cb4",
+      "font_color": "#FFF",
+      "font_white": true,
+      "taggings": null
+    },
+    {
+      "id": null,
+      "url": null,
+      "slug": "user-external",
+      "name": "external",
+      "description": "The user does not have the local organisation listed as their organization. The user has logged in through external authentication.",
+      "visible_to_students": true,
+      "color": "#545454",
+      "font_color": "#FFF",
+      "font_white": true,
+      "taggings": null
+    },
+    {
+      "id": 8,
+      "url": "http://localhost:8000/api/v2/courses/3/usertags/8",
+      "slug": "en",
+      "name": "En",
+      "description": "Studies in English",
+      "visible_to_students": true,
+      "color": "#cd0000",
+      "font_color": "#FFF",
+      "font_white": true,
+      "taggings": "http://localhost:8000/api/v2/courses/3/taggings?tag_id=8"
+    },
+    {
+      "id": 14,
+      "url": "http://localhost:8000/api/v2/courses/3/usertags/14",
+      "slug": "jaakko",
+      "name": "Jaakko",
+      "description": "",
+      "visible_to_students": false,
+      "color": "#ffd700",
+      "font_color": "#000",
+      "font_white": false,
+      "taggings": "http://localhost:8000/api/v2/courses/3/taggings?tag_id=14"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 5,
+      "url": "http://localhost:8000/api/v2/courses/3/news/5",
+      "title": "Course starts",
+      "audience": 3,
+      "publish": "2026-01-08T10:00:00+02:00",
+      "language": "-",
+      "body": "<p>Welcome to the course.</p>",
+      "pin": true
+    },
+    {
+      "id": 6,
+      "url": "http://localhost:8000/api/v2/courses/3/news/6",
+      "title": "Luento peruttu",
+      "audience": 1,
+      "publish": "2026-01-09T09:30:00+02:00",
+      "language": "fi",
+      "body": "<p>Tiistain luento on peruttu.</p>",
+      "pin": false
+    }
+  ]
+}

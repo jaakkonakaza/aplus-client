@@ -1,0 +1,108 @@
+{
+  "id": "1001",
+  "name": "Example Scala course",
+  "aPlusUrl": "https://plus.example.org/",
+  "languages": [
+    "fi",
+    "en"
+  ],
+  "version": "4.4",
+  "resources": {
+    "ideSettings": "https://courses.example.org/scala/ide-settings.zip",
+    "ideSettingsMac": "https://courses.example.org/scala/ide-settings-mac.zip",
+    "projectSettings": "https://courses.example.org/scala/project-settings.zip",
+    "customProperties": "https://courses.example.org/scala/course.properties",
+    "feedbackCss": "https://courses.example.org/scala/feedback.css",
+    "ideSettingsLinux": "https://courses.example.org/scala/ide-settings-linux.zip",
+    "ideSettingsWindows": "https://courses.example.org/scala/ide-settings-windows.zip"
+  },
+  "requiredPlugins": [
+    {
+      "name": "Scala",
+      "id": "org.intellij.scala"
+    },
+    {
+      "name": "REPLace",
+      "id": "fi.aalto.cs.replace"
+    }
+  ],
+  "vmOptions": {
+    "file.encoding": "UTF-8"
+  },
+  "optionalCategories": [
+    "practice"
+  ],
+  "autoInstall": [
+    "Starter"
+  ],
+  "scalaRepl": {
+    "initialCommands": {
+      "Starter": [
+        "import example.*"
+      ],
+      "StudentProject": [
+        "import project.*"
+      ]
+    },
+    "arguments": "-deprecation"
+  },
+  "hiddenElements": [
+    1099
+  ],
+  "grading": {
+    "style": "o1",
+    "points": {
+      "1": {
+        "A": 20,
+        "B": 0,
+        "C": 0
+      },
+      "3": {
+        "A": 40,
+        "B": 20,
+        "C": 0
+      },
+      "5": {
+        "A": 60,
+        "B": 30,
+        "C": 10
+      }
+    }
+  },
+  "alwaysShowGroups": true,
+  "modules": [
+    {
+      "name": "Starter",
+      "url": "https://courses.example.org/scala/Starter.zip",
+      "version": "1.2",
+      "changelog": "Added collection exercises.",
+      "sbt": true
+    },
+    {
+      "name": "Harjoitukset",
+      "url": "https://courses.example.org/scala/Harjoitukset.zip",
+      "version": "1.0",
+      "language": "fi"
+    },
+    {
+      "name": "Exercises",
+      "url": "https://courses.example.org/scala/Exercises.zip",
+      "version": "1.0",
+      "language": "en"
+    }
+  ],
+  "exerciseModules": {
+    "1010": {
+      "fi": "Starter",
+      "en": "Starter"
+    },
+    "1011": {
+      "fi": "Harjoitukset",
+      "en": "Exercises"
+    },
+    "1012": {
+      "fi": "StudentProject",
+      "en": "StudentProject"
+    }
+  }
+}

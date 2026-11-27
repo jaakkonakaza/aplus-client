@@ -1,0 +1,24 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 41,
+      "url": "http://localhost:8000/api/v2/courses/3/mygroups/41",
+      "members": [
+        {
+          "id": 1,
+          "url": "http://localhost:8000/api/v2/users/517",
+          "full_name": "Student 001"
+        },
+        {
+          "id": 2,
+          "url": "http://localhost:8000/api/v2/users/518",
+          "full_name": "Student 002"
+        }
+      ],
+      "timestamp": "2026-01-12T14:05:00+02:00"
+    }
+  ]
+}

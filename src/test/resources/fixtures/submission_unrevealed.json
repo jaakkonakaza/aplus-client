@@ -1,0 +1,74 @@
+{
+  "id": 21126,
+  "url": "http://localhost:8000/api/v2/submissions/21126",
+  "submission_time": "2026-07-28T01:25:26.793915+03:00",
+  "grade": 0,
+  "html_url": "http://localhost:8000/test-course/master/modules_01-python-foundations/modules_01-python-foundations_index_py-sequence-lab/submissions/21126/",
+  "exercise": {
+    "id": 24,
+    "url": "http://localhost:8000/api/v2/exercises/24",
+    "html_url": "http://localhost:8000/test-course/master/modules_01-python-foundations/modules_01-python-foundations_index_py-sequence-lab/",
+    "display_name": "1.1 Sequence laboratory",
+    "max_points": 40,
+    "max_submissions": 10,
+    "hierarchical_name": "1.1 Sequence laboratory",
+    "difficulty": ""
+  },
+  "submitters": [
+    {
+      "id": 517,
+      "url": "http://localhost:8000/api/v2/users/517",
+      "username": "student001",
+      "student_id": "s1000001",
+      "email": "student001@example.test",
+      "full_name": "Student 001",
+      "is_external": true
+    }
+  ],
+  "submission_data": null,
+  "files": [
+    {
+      "id": 122347,
+      "url": "http://localhost:8000/api/v2/submissions/21126/files/122347",
+      "filename": "main.py",
+      "param_name": "file1"
+    },
+    {
+      "id": 122348,
+      "url": "http://localhost:8000/api/v2/submissions/21126/files/122348",
+      "filename": "models.py",
+      "param_name": "file2"
+    },
+    {
+      "id": 122349,
+      "url": "http://localhost:8000/api/v2/submissions/21126/files/122349",
+      "filename": "reporting.py",
+      "param_name": "file3"
+    },
+    {
+      "id": 122350,
+      "url": "http://localhost:8000/api/v2/submissions/21126/files/122350",
+      "filename": "repository.py",
+      "param_name": "file4"
+    },
+    {
+      "id": 122351,
+      "url": "http://localhost:8000/api/v2/submissions/21126/files/122351",
+      "filename": "services.py",
+      "param_name": "file5"
+    },
+    {
+      "id": 122352,
+      "url": "http://localhost:8000/api/v2/submissions/21126/files/122352",
+      "filename": "validation.py",
+      "param_name": "file6"
+    }
+  ],
+  "status": "ready",
+  "late_penalty_applied": 0.4,
+  "grading_time": "2026-08-04T10:25:31.719528+03:00",
+  "grader": null,
+  "feedback": null,
+  "assistant_feedback": null,
+  "grading_data": null
+}

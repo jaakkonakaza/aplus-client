@@ -1,0 +1,76 @@
+{
+  "id": "1002",
+  "name": "Example Python course",
+  "aPlusUrl": "https://plus.example.org/",
+  "languages": [
+    "fi",
+    "en"
+  ],
+  "version": "4.4",
+  "resources": {
+    "ideSettings": "https://courses.example.org/python/ide-settings.zip",
+    "projectSettings": "https://courses.example.org/python/project-settings.zip",
+    "feedbackCss": "https://courses.example.org/python/feedback.css"
+  },
+  "requiredPlugins": [
+    {
+      "name": "Python",
+      "id": "PythonCore"
+    }
+  ],
+  "callbacks": {
+    "postDownloadModule": [
+      "AddModuleWatermark"
+    ]
+  },
+  "optionalCategories": [
+    "practice"
+  ],
+  "autoInstall": [
+    "Basics"
+  ],
+  "modules": [
+    {
+      "name": "Basics",
+      "url": "https://courses.example.org/python/Basics.zip",
+      "version": "1.1",
+      "changelog": "Added input examples."
+    },
+    {
+      "name": "Tiedostot",
+      "url": "https://courses.example.org/python/Tiedostot.zip",
+      "version": "1.0",
+      "language": "fi"
+    },
+    {
+      "name": "Files",
+      "url": "https://courses.example.org/python/Files.zip",
+      "version": "1.0",
+      "language": "en"
+    }
+  ],
+  "exerciseModules": {
+    "2010": {
+      "fi": "Basics",
+      "en": "Basics"
+    },
+    "2011": {
+      "fi": "Tiedostot",
+      "en": "Files"
+    }
+  },
+  "grading": {
+    "style": "total",
+    "points": {
+      "1": {
+        "total": 50
+      },
+      "3": {
+        "total": 100
+      },
+      "5": {
+        "total": 150
+      }
+    }
+  }
+}

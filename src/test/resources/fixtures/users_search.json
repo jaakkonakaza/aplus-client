@@ -1,0 +1,16 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": 517,
+      "url": "http://localhost:8000/api/v2/users/517",
+      "username": "student001",
+      "student_id": "s1000001",
+      "email": "student001@example.test",
+      "full_name": "Student 001",
+      "is_external": true
+    }
+  ]
+}

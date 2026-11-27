@@ -1,0 +1,24 @@
+{
+  "id": 517,
+  "url": "http://localhost:8000/api/v2/users/517",
+  "username": "student001",
+  "student_id": "s1000001",
+  "email": "student001@example.test",
+  "full_name": "Student 001",
+  "is_external": true,
+  "enrolled_courses": [
+    {
+      "id": 3,
+      "url": "http://localhost:8000/api/v2/courses/3",
+      "html_url": "http://localhost:8000/test-course/master/",
+      "code": "test-course",
+      "name": "Test Course",
+      "instance_name": "Test Course"
+    }
+  ],
+  "staff_courses": [],
+  "teacher_courses": [],
+  "assistant_courses": [],
+  "first_name": "Student",
+  "last_name": "001"
+}

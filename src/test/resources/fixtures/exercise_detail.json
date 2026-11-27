@@ -1,0 +1,89 @@
+{
+  "id": 24,
+  "url": "http://localhost:8000/api/v2/exercises/24",
+  "html_url": "http://localhost:8000/test-course/master/modules_01-python-foundations/modules_01-python-foundations_index_py-sequence-lab/",
+  "display_name": "1.1 Sequence laboratory",
+  "max_points": 40,
+  "max_submissions": 10,
+  "hierarchical_name": "1.1 Sequence laboratory",
+  "difficulty": "",
+  "name": "Sequence laboratory",
+  "course": {
+    "id": 3,
+    "url": "http://localhost:8000/api/v2/courses/3",
+    "html_url": "http://localhost:8000/test-course/master/",
+    "code": "test-course",
+    "name": "Test Course",
+    "instance_name": "Test Course"
+  },
+  "is_submittable": true,
+  "post_url": "http://localhost:8000/test-course/master/modules_01-python-foundations/modules_01-python-foundations_index_py-sequence-lab/",
+  "consecutive_order": 1,
+  "parent_name": null,
+  "exercise_info": {
+    "form_spec": [
+      {
+        "key": "file1",
+        "type": "file",
+        "title": "main.py",
+        "required": true
+      },
+      {
+        "key": "file2",
+        "type": "file",
+        "title": "models.py",
+        "required": true
+      },
+      {
+        "key": "file3",
+        "type": "file",
+        "title": "repository.py",
+        "required": true
+      },
+      {
+        "key": "file4",
+        "type": "file",
+        "title": "services.py",
+        "required": true
+      },
+      {
+        "key": "file5",
+        "type": "file",
+        "title": "validation.py",
+        "required": true
+      },
+      {
+        "key": "file6",
+        "type": "file",
+        "title": "reporting.py",
+        "required": true
+      }
+    ],
+    "form_i18n": {
+      "main.py": {
+        "en": "main.py"
+      },
+      "models.py": {
+        "en": "models.py"
+      },
+      "repository.py": {
+        "en": "repository.py"
+      },
+      "services.py": {
+        "en": "services.py"
+      },
+      "validation.py": {
+        "en": "validation.py"
+      },
+      "reporting.py": {
+        "en": "reporting.py"
+      }
+    }
+  },
+  "templates": "",
+  "submissions": "http://localhost:8000/api/v2/exercises/24/submissions",
+  "my_submissions": "http://localhost:8000/api/v2/exercises/24/submissions/me",
+  "my_stats": "http://localhost:8000/api/v2/exercises/24/submitter_stats/me",
+  "statistics": "http://localhost:8000/api/v2/exercises/24/statistics/",
+  "status": "unlisted"
+}

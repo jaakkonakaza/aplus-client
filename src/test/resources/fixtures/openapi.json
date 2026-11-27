@@ -1,0 +1,4849 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "A+ API",
+    "version": "2.0"
+  },
+  "paths": {
+    "/api/v2/users/": {
+      "get": {
+        "operationId": "get_api_v2_users",
+        "description": "The `users` endpoint returns information about users.\n\nOperations\n----------\n\n`GET /users/?search=email@address.com`:\n    returns a list of users matching the exact email address.\n    The search parameter is required.\n\n`GET /users/<user_id>/`:\n    returns the details of a specific user.\n\n`GET /users/me/`:\n    returns the details of the current user.",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "A search term.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/UserBrief"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/users/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_users_user_id",
+        "description": "The `users` endpoint returns information about users.\n\nOperations\n----------\n\n`GET /users/?search=email@address.com`:\n    returns a list of users matching the exact email address.\n    The search parameter is required.\n\n`GET /users/<user_id>/`:\n    returns the details of a specific user.\n\n`GET /users/me/`:\n    returns the details of the current user.",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "A search term.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/": {
+      "get": {
+        "operationId": "get_api_v2_courses",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CourseBrief"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "post": {
+        "operationId": "post_api_v2_courses",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseWrite"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/current-teachers/": {
+      "get": {
+        "operationId": "get_api_v2_courses_current_teachers",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "put": {
+        "operationId": "put_api_v2_courses_course_id",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseWrite"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "patch": {
+        "operationId": "patch_api_v2_courses_course_id",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Course"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "delete": {
+        "operationId": "delete_api_v2_courses_course_id",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/submissions/zip/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_submissions_zip",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Course"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/exercises/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_exercises",
+        "description": "The `exercises` endpoint returns information about the course modules\ndefined in the course instance, and the exercises defined in those modules.\n\nOperations\n----------\n\n`GET /courses/<course_id>/exercises/`:\n    returns a list of all modules and their exercises.\n\n`GET /courses/<course_id>/exercises/<exercisemodule_id>/`:\n    returns the details and exercises of a specific module.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/exercises/{exercisemodule_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_exercises_exercisemodule_id",
+        "description": "The `exercises` endpoint returns information about the course modules\ndefined in the course instance, and the exercises defined in those modules.\n\nOperations\n----------\n\n`GET /courses/<course_id>/exercises/`:\n    returns a list of all modules and their exercises.\n\n`GET /courses/<course_id>/exercises/<exercisemodule_id>/`:\n    returns the details and exercises of a specific module.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "exercisemodule_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/tree/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_tree",
+        "description": "The `tree` endpoint returns the modules, chapters and exercises of the\ncourse in a sorted tree-like structure.\n\nOperations\n----------\n\n`GET /courses/<course_id>/tree/`:\n    returns the tree.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/students/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_students",
+        "description": "The `students` endpoint returns information about the students that have\nenrolled in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/students/`:\n    returns a list of all students.\n\n`GET /courses/<course_id>/students/<user_id>/`:\n    returns the details of a specific student.\n\n`GET /courses/<course_id>/students/me/`:\n    returns the details of the current user.\n\n`DELETE /courses/<course_id>/students/<user_id>/`:\n    removes the enrollment. Students cannot unenroll themselves.\n\n- URL parameters:\n    - `status`: the new status for the enrollment. `REMOVED` and `BANNED`\n        are currently supported.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "A search term.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/StudentBrief"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/students/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_students_user_id",
+        "description": "The `students` endpoint returns information about the students that have\nenrolled in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/students/`:\n    returns a list of all students.\n\n`GET /courses/<course_id>/students/<user_id>/`:\n    returns the details of a specific student.\n\n`GET /courses/<course_id>/students/me/`:\n    returns the details of the current user.\n\n`DELETE /courses/<course_id>/students/<user_id>/`:\n    removes the enrollment. Students cannot unenroll themselves.\n\n- URL parameters:\n    - `status`: the new status for the enrollment. `REMOVED` and `BANNED`\n        are currently supported.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "A search term.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StudentBrief"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "delete": {
+        "operationId": "delete_api_v2_courses_course_id_students_user_id",
+        "description": "The `students` endpoint returns information about the students that have\nenrolled in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/students/`:\n    returns a list of all students.\n\n`GET /courses/<course_id>/students/<user_id>/`:\n    returns the details of a specific student.\n\n`GET /courses/<course_id>/students/me/`:\n    returns the details of the current user.\n\n`DELETE /courses/<course_id>/students/<user_id>/`:\n    removes the enrollment. Students cannot unenroll themselves.\n\n- URL parameters:\n    - `status`: the new status for the enrollment. `REMOVED` and `BANNED`\n        are currently supported.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "A search term.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/usertags/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_usertags",
+        "description": "The `usertags` endpoint returns information about the student tags defined\nin the course, and can also create and delete student tags.\n\nOperations\n----------\n\n`GET /courses/<course_id>/usertags/`:\n    returns a list of all student tags.\n\n`GET /courses/<course_id>/usertags/<usertag_id>/`:\n    returns the details of a specific student tag.\n\n`POST /courses/<course_id>/usertags/`:\n    creates a new student tag.\n\n- Body data:\n    - `slug`\n    - `name`\n    - `description`\n    - `visible_to_students`\n    - `color`\n\n`DELETE /courses/<course_id>/usertags/<usertag_id>/`:\n    deletes a specific student tag.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CourseUsertag"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "post": {
+        "operationId": "post_api_v2_courses_course_id_usertags",
+        "description": "The `usertags` endpoint returns information about the student tags defined\nin the course, and can also create and delete student tags.\n\nOperations\n----------\n\n`GET /courses/<course_id>/usertags/`:\n    returns a list of all student tags.\n\n`GET /courses/<course_id>/usertags/<usertag_id>/`:\n    returns the details of a specific student tag.\n\n`POST /courses/<course_id>/usertags/`:\n    creates a new student tag.\n\n- Body data:\n    - `slug`\n    - `name`\n    - `description`\n    - `visible_to_students`\n    - `color`\n\n`DELETE /courses/<course_id>/usertags/<usertag_id>/`:\n    deletes a specific student tag.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseUsertag"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseUsertag"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseUsertag"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseUsertag"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/usertags/{usertag_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_usertags_usertag_id",
+        "description": "The `usertags` endpoint returns information about the student tags defined\nin the course, and can also create and delete student tags.\n\nOperations\n----------\n\n`GET /courses/<course_id>/usertags/`:\n    returns a list of all student tags.\n\n`GET /courses/<course_id>/usertags/<usertag_id>/`:\n    returns the details of a specific student tag.\n\n`POST /courses/<course_id>/usertags/`:\n    creates a new student tag.\n\n- Body data:\n    - `slug`\n    - `name`\n    - `description`\n    - `visible_to_students`\n    - `color`\n\n`DELETE /courses/<course_id>/usertags/<usertag_id>/`:\n    deletes a specific student tag.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usertag_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseUsertag"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "delete": {
+        "operationId": "delete_api_v2_courses_course_id_usertags_usertag_id",
+        "description": "The `usertags` endpoint returns information about the student tags defined\nin the course, and can also create and delete student tags.\n\nOperations\n----------\n\n`GET /courses/<course_id>/usertags/`:\n    returns a list of all student tags.\n\n`GET /courses/<course_id>/usertags/<usertag_id>/`:\n    returns the details of a specific student tag.\n\n`POST /courses/<course_id>/usertags/`:\n    creates a new student tag.\n\n- Body data:\n    - `slug`\n    - `name`\n    - `description`\n    - `visible_to_students`\n    - `color`\n\n`DELETE /courses/<course_id>/usertags/<usertag_id>/`:\n    deletes a specific student tag.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usertag_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/taggings/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_taggings",
+        "description": "The `taggings` endpoint returns information about the student tags applied\nto the student of the course, and can also apply tags to users and remove\nthem.\n\nOperations\n----------\n\n`GET /courses/<course_id>/taggings/`:\n    returns a list of all student taggings.\n\n`GET /courses/<course_id>/taggings/<usertag_id>/`:\n    returns the details of a specific student tagging.\n\n`POST /courses/<course_id>/taggings/`:\n    creates one or more student taggings.\n\n- Single create (legacy):\n    - Body:\n        - `tag.slug`\n        - One of:\n            - `user.id`\n            - `user.student_id`\n            - `user.username`\n            - `user.email`\n\n- Bulk create (new, JSON body): any of the following are accepted:\n    - `{ \"tag\": {\"slug\": \"my-tag\"}, \"users\": [{\"id\": 1}, {\"id\": 2}] }`\n    - `{ \"tag\": {\"slug\": \"my-tag\"}, \"user_ids\": [1, 2] }`\n\n`DELETE /courses/<course_id>/taggings/`:\n    deletes a user tag from one or more students.\n\n- Query parameters (legacy):\n    - `tag_id`: id of the tag to be deleted\n    - `user_id`: id of the student from which the tag will be deleted\n        (repeated for each student)\n\n- JSON body (new; alternative to query params):\n    - By id: `{ \"tag_id\": 3, \"user_ids\": [17, 19, 25] }`\n    - By slug: `{ \"tag_slug\": \"my-tag\", \"user_ids\": [17, 19] }`\n    - Nested variants are also accepted: `{ \"tag\": {\"id\": 3}, \"users\": [{\"id\": 17}, {\"id\": 19}] }`\n\n`DELETE /courses/<course_id>/taggings/<usertag_id>/`:\n    deletes a specific student tagging.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CourseUsertaggings"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "post": {
+        "operationId": "post_api_v2_courses_course_id_taggings",
+        "description": "Create one or more student taggings.\n\nBackwards-compatible behavior:\n- Single create (legacy): expects body with keys `tag.slug` and a single `user.*`.\n- Bulk create (new): accepts either\n    { \"tag\": {\"slug\": \"...\"}, \"users\": [{\"id\": 1}, {\"id\": 2}] }\n  or\n    { \"tag\": {\"slug\": \"...\"}, \"user_ids\": [1,2,3] }\nReturns 201 with a list of created items in `results`.\nIf some creations fail, returns 201 with `results` + `errors` for partial success,\nor 400 if none could be created.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseUsertaggings"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseUsertaggings"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseUsertaggings"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseUsertaggings"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "delete": {
+        "operationId": "delete_api_v2_courses_course_id_taggings",
+        "description": "Destroy taggings based on GET query parameters.\n\nThe detail view requires the ID of the tagging, but this method can\nsearch for the tagging with other parameters.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/taggings/{usertag_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_taggings_usertag_id",
+        "description": "The `taggings` endpoint returns information about the student tags applied\nto the student of the course, and can also apply tags to users and remove\nthem.\n\nOperations\n----------\n\n`GET /courses/<course_id>/taggings/`:\n    returns a list of all student taggings.\n\n`GET /courses/<course_id>/taggings/<usertag_id>/`:\n    returns the details of a specific student tagging.\n\n`POST /courses/<course_id>/taggings/`:\n    creates one or more student taggings.\n\n- Single create (legacy):\n    - Body:\n        - `tag.slug`\n        - One of:\n            - `user.id`\n            - `user.student_id`\n            - `user.username`\n            - `user.email`\n\n- Bulk create (new, JSON body): any of the following are accepted:\n    - `{ \"tag\": {\"slug\": \"my-tag\"}, \"users\": [{\"id\": 1}, {\"id\": 2}] }`\n    - `{ \"tag\": {\"slug\": \"my-tag\"}, \"user_ids\": [1, 2] }`\n\n`DELETE /courses/<course_id>/taggings/`:\n    deletes a user tag from one or more students.\n\n- Query parameters (legacy):\n    - `tag_id`: id of the tag to be deleted\n    - `user_id`: id of the student from which the tag will be deleted\n        (repeated for each student)\n\n- JSON body (new; alternative to query params):\n    - By id: `{ \"tag_id\": 3, \"user_ids\": [17, 19, 25] }`\n    - By slug: `{ \"tag_slug\": \"my-tag\", \"user_ids\": [17, 19] }`\n    - Nested variants are also accepted: `{ \"tag\": {\"id\": 3}, \"users\": [{\"id\": 17}, {\"id\": 19}] }`\n\n`DELETE /courses/<course_id>/taggings/<usertag_id>/`:\n    deletes a specific student tagging.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usertag_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseUsertaggings"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "delete": {
+        "operationId": "delete_api_v2_courses_course_id_taggings_usertag_id",
+        "description": "The `taggings` endpoint returns information about the student tags applied\nto the student of the course, and can also apply tags to users and remove\nthem.\n\nOperations\n----------\n\n`GET /courses/<course_id>/taggings/`:\n    returns a list of all student taggings.\n\n`GET /courses/<course_id>/taggings/<usertag_id>/`:\n    returns the details of a specific student tagging.\n\n`POST /courses/<course_id>/taggings/`:\n    creates one or more student taggings.\n\n- Single create (legacy):\n    - Body:\n        - `tag.slug`\n        - One of:\n            - `user.id`\n            - `user.student_id`\n            - `user.username`\n            - `user.email`\n\n- Bulk create (new, JSON body): any of the following are accepted:\n    - `{ \"tag\": {\"slug\": \"my-tag\"}, \"users\": [{\"id\": 1}, {\"id\": 2}] }`\n    - `{ \"tag\": {\"slug\": \"my-tag\"}, \"user_ids\": [1, 2] }`\n\n`DELETE /courses/<course_id>/taggings/`:\n    deletes a user tag from one or more students.\n\n- Query parameters (legacy):\n    - `tag_id`: id of the tag to be deleted\n    - `user_id`: id of the student from which the tag will be deleted\n        (repeated for each student)\n\n- JSON body (new; alternative to query params):\n    - By id: `{ \"tag_id\": 3, \"user_ids\": [17, 19, 25] }`\n    - By slug: `{ \"tag_slug\": \"my-tag\", \"user_ids\": [17, 19] }`\n    - Nested variants are also accepted: `{ \"tag\": {\"id\": 3}, \"users\": [{\"id\": 17}, {\"id\": 19}] }`\n\n`DELETE /courses/<course_id>/taggings/<usertag_id>/`:\n    deletes a specific student tagging.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "usertag_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/points/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_points",
+        "description": "The `points` endpoint returns information about the points earned in the\ncourse by the user.\n\nOperations\n----------\n\n`GET /courses/<course_id>/points/`:\n    returns a list of all users.\n\n`GET /courses/<course_id>/points/<user_id>/`:\n    returns a list of a specific user's points.\n\n`GET /courses/<course_id>/points/me/`:\n    returns a list of the current user's points.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/points/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_points_user_id",
+        "description": "The `points` endpoint returns information about the points earned in the\ncourse by the user.\n\nOperations\n----------\n\n`GET /courses/<course_id>/points/`:\n    returns a list of all users.\n\n`GET /courses/<course_id>/points/<user_id>/`:\n    returns a list of a specific user's points.\n\n`GET /courses/<course_id>/points/me/`:\n    returns a list of the current user's points.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/submissiondata/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_submissiondata",
+        "description": "The `submissiondata` endpoint returns information in CSV format about the\nusers' submissions in exercises in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/submissiondata/`:\n    returns the submission data of all users as CSV.\n\n`GET /courses/<course_id>/submissiondata/<user_id>`:\n    returns the submission data of a specific user as CSV.\n\n`GET /courses/<course_id>/submissiondata/me`:\n    returns the submission data of the current user as CSV.\n\nAll operations support the following URL parameters for filtering:\n\n- `filter`: the exercise number as a string, including module and chapter numbers\n    (format N.N.N)\n- `category_id`: id of the exercise category\n- `module_id`: id of the course module\n- `exercise_id`: id of the exercise\n- `best`: \"yes\" or \"no\"; \"no\" includes all different submissions from same submitters\n- `field`: return submission data only for the given field, e.g., \"field_0\"",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              },
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/submissiondata/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_submissiondata_user_id",
+        "description": "The `submissiondata` endpoint returns information in CSV format about the\nusers' submissions in exercises in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/submissiondata/`:\n    returns the submission data of all users as CSV.\n\n`GET /courses/<course_id>/submissiondata/<user_id>`:\n    returns the submission data of a specific user as CSV.\n\n`GET /courses/<course_id>/submissiondata/me`:\n    returns the submission data of the current user as CSV.\n\nAll operations support the following URL parameters for filtering:\n\n- `filter`: the exercise number as a string, including module and chapter numbers\n    (format N.N.N)\n- `category_id`: id of the exercise category\n- `module_id`: id of the course module\n- `exercise_id`: id of the exercise\n- `best`: \"yes\" or \"no\"; \"no\" includes all different submissions from same submitters\n- `field`: return submission data only for the given field, e.g., \"field_0\"",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {}
+              },
+              "application/vnd.aplus+json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/pendingsubmissiondata/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_pendingsubmissiondata",
+        "description": "The `pendingsubmissiondata` endpoint returns information in CSV format about the\nusers' submissions in exercises in the course. Similar to the 'submissiondata' endpoint,\nbut overrides the serialize_submissions method to include submissions with any status,\nsuch as waiting for grading or error.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              },
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/pendingsubmissiondata/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_pendingsubmissiondata_user_id",
+        "description": "The `pendingsubmissiondata` endpoint returns information in CSV format about the\nusers' submissions in exercises in the course. Similar to the 'submissiondata' endpoint,\nbut overrides the serialize_submissions method to include submissions with any status,\nsuch as waiting for grading or error.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {}
+              },
+              "application/vnd.aplus+json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/aggregatedata/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_aggregatedata",
+        "description": "The `aggregatedata` endpoint returns aggregate information in CSV format\nabout the users' submissions in exercises in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/aggregatedata/`:\n    returns the aggregate submission data of all users as CSV.\n\n`GET /courses/<course_id>/aggregatedata/<user_id>`:\n    returns the aggregate submission data of a specific user as CSV.\n\n`GET /courses/<course_id>/aggregatedata/me`:\n    returns the aggregate submission data of the current user as CSV.\n\nAll operations support the following URL parameters for filtering:\n\n- `filter`: the exercise number as a string, including module and chapter numbers\n    (format N.N.N)\n- `category_id`: id of the exercise category\n- `module_id`: id of the course module\n- `exercise_id`: id of the exercise",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              },
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/aggregatedata/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_aggregatedata_user_id",
+        "description": "The `aggregatedata` endpoint returns aggregate information in CSV format\nabout the users' submissions in exercises in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/aggregatedata/`:\n    returns the aggregate submission data of all users as CSV.\n\n`GET /courses/<course_id>/aggregatedata/<user_id>`:\n    returns the aggregate submission data of a specific user as CSV.\n\n`GET /courses/<course_id>/aggregatedata/me`:\n    returns the aggregate submission data of the current user as CSV.\n\nAll operations support the following URL parameters for filtering:\n\n- `filter`: the exercise number as a string, including module and chapter numbers\n    (format N.N.N)\n- `category_id`: id of the exercise category\n- `module_id`: id of the course module\n- `exercise_id`: id of the exercise",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {}
+              },
+              "application/vnd.aplus+json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/resultsdata/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_resultsdata",
+        "description": "The `resultsdata` endpoint returns the students' points in the course\nin CSV format.\n\nOperations\n----------\n\n`GET /courses/<course_id>/resultsdata/`:\n    returns the points of all users as CSV.\n\n`GET /courses/<course_id>/resultsdata/<user_id>`:\n    returns the points of a specific user as CSV.\n\nAll operations support the following URL parameters for filtering:\n\n- `filter`: the exercise number as a string, including module and chapter numbers\n    (format N.N.N)\n- `category_id`: id of the exercise category\n- `module_id`: id of the course module\n- `exercise_id`: id of the exercise\n- `show_unofficial`: if \"true\", unofficial submissions are included in the results",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              },
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/resultsdata/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_resultsdata_user_id",
+        "description": "The `resultsdata` endpoint returns the students' points in the course\nin CSV format.\n\nOperations\n----------\n\n`GET /courses/<course_id>/resultsdata/`:\n    returns the points of all users as CSV.\n\n`GET /courses/<course_id>/resultsdata/<user_id>`:\n    returns the points of a specific user as CSV.\n\nAll operations support the following URL parameters for filtering:\n\n- `filter`: the exercise number as a string, including module and chapter numbers\n    (format N.N.N)\n- `category_id`: id of the exercise category\n- `module_id`: id of the course module\n- `exercise_id`: id of the exercise\n- `show_unofficial`: if \"true\", unofficial submissions are included in the results",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {}
+              },
+              "application/vnd.aplus+json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/bestresultsdata/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_bestresultsdata",
+        "description": "This is only a temporary experiment to fix the `resultdata` endpoint's performance problems.\nExternal applications should not depend on this API endpoint\nas this will be eventually removed.\n\nThis is similar to the `resultsdata` endpoint,\nbut this endpoint ignores the exercise grading mode.\nThe results are returned as if all exercises used the BEST mode\nand the LAST mode is ignored.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              },
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/bestresultsdata/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_bestresultsdata_user_id",
+        "description": "This is only a temporary experiment to fix the `resultdata` endpoint's performance problems.\nExternal applications should not depend on this API endpoint\nas this will be eventually removed.\n\nThis is similar to the `resultsdata` endpoint,\nbut this endpoint ignores the exercise grading mode.\nThe results are returned as if all exercises used the BEST mode\nand the LAST mode is ignored.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "text/csv": {
+                "schema": {}
+              },
+              "application/vnd.aplus+json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/mygroups/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_mygroups",
+        "description": "The `mygroups` endpoint returns information about the user's own student\ngroups defined in the course. Teachers receive only their own groups as\nwell.\n\nOperations\n----------\n\n`GET /courses/<course_id>/mygroups/`:\n    returns a list of all groups.\n\n`GET /courses/<course_id>/mygroups/<id>/`:\n    returns the details of a specific group.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CourseStudentGroupBrief"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/mygroups/{id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_mygroups_id",
+        "description": "The `mygroups` endpoint returns information about the user's own student\ngroups defined in the course. Teachers receive only their own groups as\nwell.\n\nOperations\n----------\n\n`GET /courses/<course_id>/mygroups/`:\n    returns a list of all groups.\n\n`GET /courses/<course_id>/mygroups/<id>/`:\n    returns the details of a specific group.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseStudentGroupBrief"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/groups/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_groups",
+        "description": "The `mygroups` endpoint returns information about all student groups\ndefined in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/groups/`:\n    returns a list of all groups.\n\n`GET /courses/<course_id>/groups/<id>/`:\n    returns the details of a specific group.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CourseStudentGroup"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/groups/{id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_groups_id",
+        "description": "The `mygroups` endpoint returns information about all student groups\ndefined in the course.\n\nOperations\n----------\n\n`GET /courses/<course_id>/groups/`:\n    returns a list of all groups.\n\n`GET /courses/<course_id>/groups/<id>/`:\n    returns the details of a specific group.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "A unique integer value identifying this MODEL_NAME_STUDENT_GROUP.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseStudentGroup"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/news/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_news",
+        "description": "The `news` endpoint returns information about course news.\n\nOperations\n----------\n\n`GET /courses/<course_id>/news/`:\n    returns a list of all news items.\n\n`GET /courses/<course_id>/news/<id>/`:\n    returns the details of a specific news.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CourseNews"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/news/{id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_news_id",
+        "description": "The `news` endpoint returns information about course news.\n\nOperations\n----------\n\n`GET /courses/<course_id>/news/`:\n    returns a list of all news items.\n\n`GET /courses/<course_id>/news/<id>/`:\n    returns the details of a specific news.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseNews"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/lineitems/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_lineitems",
+        "description": "ViewSet for reading LTI line items associated with a given course.\nAlso implements 'scores' action for posting grades related to a line item.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LTILineItem"
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/lineitems/{id}/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_lineitems_id",
+        "description": "ViewSet for reading LTI line items associated with a given course.\nAlso implements 'scores' action for posting grades related to a line item.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LTILineItem"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/": {
+      "get": {
+        "operationId": "get_api_v2_exercises_exercise_id",
+        "description": "The `exercises` endpoint returns information about a single exercise. This\nendpoint cannot be used for getting a list of all exercises. For that\npurpose, use `/courses/<course_id>/exercises/`.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/`:\n    returns the details of a specific exercise.\n\n`POST /exercises/<exercise_id>/grader/`:\n    used by automatic graders when grading a submission.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Exercise"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/grader/": {
+      "get": {
+        "operationId": "get_api_v2_exercises_exercise_id_grader",
+        "description": "The `exercises` endpoint returns information about a single exercise. This\nendpoint cannot be used for getting a list of all exercises. For that\npurpose, use `/courses/<course_id>/exercises/`.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/`:\n    returns the details of a specific exercise.\n\n`POST /exercises/<exercise_id>/grader/`:\n    used by automatic graders when grading a submission.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExerciseGrader"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "post": {
+        "operationId": "post_api_v2_exercises_exercise_id_grader",
+        "description": "The `exercises` endpoint returns information about a single exercise. This\nendpoint cannot be used for getting a list of all exercises. For that\npurpose, use `/courses/<course_id>/exercises/`.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/`:\n    returns the details of a specific exercise.\n\n`POST /exercises/<exercise_id>/grader/`:\n    used by automatic graders when grading a submission.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExerciseGrader"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/ExerciseGrader"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/ExerciseGrader"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExerciseGrader"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/submissions/": {
+      "get": {
+        "operationId": "get_api_v2_exercises_exercise_id_submissions",
+        "description": "The `submissions` endpoint returns information about the submissions of an\nexercise. Can also be used for creating new submissions and submitting them\nfor grading.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/submissions/`:\n    returns a list of all submissions.\n\n`GET /exercises/<exercise_id>/submissions/<user_id>/`:\n    returns a list of a specific user's submissions.\n\n`GET /exercises/<exercise_id>/submissions/me/`:\n    returns a list of the current user's submissions.\n\n`POST /exercises/<exercise_id>/submissions/`:\n    creates a new submission. Only for teachers.\n\n- Body data:\n    - One of:\n        - `students`\n        - `students_by_user_id`\n        - `students_by_student_id`\n        - `students_by_email`\n    - `feedback`\n    - `assistant_feedback`\n    - `grading_data`\n    - `points`\n    - `submission_time`\n\n`POST /exercises/<exercise_id>/submissions/submit/`:\n    submits a new submission for grading. Students are allowed to use this\n    endpoint. The body data is used as submission data and files may be\n    uploaded too.\n\n- Body data:\n    - `_aplus_group`: group id when submitting as a group\n    - Remaining key-value pairs match questions and their answers.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SubmissionBrief"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "post": {
+        "operationId": "post_api_v2_exercises_exercise_id_submissions",
+        "description": "The `submissions` endpoint returns information about the submissions of an\nexercise. Can also be used for creating new submissions and submitting them\nfor grading.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/submissions/`:\n    returns a list of all submissions.\n\n`GET /exercises/<exercise_id>/submissions/<user_id>/`:\n    returns a list of a specific user's submissions.\n\n`GET /exercises/<exercise_id>/submissions/me/`:\n    returns a list of the current user's submissions.\n\n`POST /exercises/<exercise_id>/submissions/`:\n    creates a new submission. Only for teachers.\n\n- Body data:\n    - One of:\n        - `students`\n        - `students_by_user_id`\n        - `students_by_student_id`\n        - `students_by_email`\n    - `feedback`\n    - `assistant_feedback`\n    - `grading_data`\n    - `points`\n    - `submission_time`\n\n`POST /exercises/<exercise_id>/submissions/submit/`:\n    submits a new submission for grading. Students are allowed to use this\n    endpoint. The body data is used as submission data and files may be\n    uploaded too.\n\n- Body data:\n    - `_aplus_group`: group id when submitting as a group\n    - Remaining key-value pairs match questions and their answers.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionBrief"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionBrief"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionBrief"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionBrief"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/submissions/zip/": {
+      "get": {
+        "operationId": "get_api_v2_exercises_exercise_id_submissions_zip",
+        "description": "The `submissions` endpoint returns information about the submissions of an\nexercise. Can also be used for creating new submissions and submitting them\nfor grading.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/submissions/`:\n    returns a list of all submissions.\n\n`GET /exercises/<exercise_id>/submissions/<user_id>/`:\n    returns a list of a specific user's submissions.\n\n`GET /exercises/<exercise_id>/submissions/me/`:\n    returns a list of the current user's submissions.\n\n`POST /exercises/<exercise_id>/submissions/`:\n    creates a new submission. Only for teachers.\n\n- Body data:\n    - One of:\n        - `students`\n        - `students_by_user_id`\n        - `students_by_student_id`\n        - `students_by_email`\n    - `feedback`\n    - `assistant_feedback`\n    - `grading_data`\n    - `points`\n    - `submission_time`\n\n`POST /exercises/<exercise_id>/submissions/submit/`:\n    submits a new submission for grading. Students are allowed to use this\n    endpoint. The body data is used as submission data and files may be\n    uploaded too.\n\n- Body data:\n    - `_aplus_group`: group id when submitting as a group\n    - Remaining key-value pairs match questions and their answers.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionBrief"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/submissions/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_exercises_exercise_id_submissions_user_id",
+        "description": "The `submissions` endpoint returns information about the submissions of an\nexercise. Can also be used for creating new submissions and submitting them\nfor grading.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/submissions/`:\n    returns a list of all submissions.\n\n`GET /exercises/<exercise_id>/submissions/<user_id>/`:\n    returns a list of a specific user's submissions.\n\n`GET /exercises/<exercise_id>/submissions/me/`:\n    returns a list of the current user's submissions.\n\n`POST /exercises/<exercise_id>/submissions/`:\n    creates a new submission. Only for teachers.\n\n- Body data:\n    - One of:\n        - `students`\n        - `students_by_user_id`\n        - `students_by_student_id`\n        - `students_by_email`\n    - `feedback`\n    - `assistant_feedback`\n    - `grading_data`\n    - `points`\n    - `submission_time`\n\n`POST /exercises/<exercise_id>/submissions/submit/`:\n    submits a new submission for grading. Students are allowed to use this\n    endpoint. The body data is used as submission data and files may be\n    uploaded too.\n\n- Body data:\n    - `_aplus_group`: group id when submitting as a group\n    - Remaining key-value pairs match questions and their answers.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionBrief"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/submitter_stats/": {
+      "get": {
+        "operationId": "get_api_v2_exercises_exercise_id_submitter_stats",
+        "description": "The `submitter_stats` endpoint returns statistical information about the\nstudents' submissions in this exercise, including current grade and\nsubmission count.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/submitter_stats/`:\n    returns a list of all users.\n\n`GET /exercises/<exercise_id>/submitter_stats/<user_id>/`:\n    returns a specific user's submission statistics.\n\n`GET /exercises/<exercise_id>/submitter_stats/me/`:\n    returns the current user's submission statistics.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/SubmitterStatsBrief"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/submitter_stats/{user_id}/": {
+      "get": {
+        "operationId": "get_api_v2_exercises_exercise_id_submitter_stats_user_id",
+        "description": "The `submitter_stats` endpoint returns statistical information about the\nstudents' submissions in this exercise, including current grade and\nsubmission count.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/submitter_stats/`:\n    returns a list of all users.\n\n`GET /exercises/<exercise_id>/submitter_stats/<user_id>/`:\n    returns a specific user's submission statistics.\n\n`GET /exercises/<exercise_id>/submitter_stats/me/`:\n    returns the current user's submission statistics.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmitterStats"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/submissions/{submission_id}/": {
+      "get": {
+        "operationId": "get_api_v2_submissions_submission_id",
+        "description": "The `submissions` endpoint returns information about a single submissions\nin an exercise. This endpoint cannot be used for listing all submissions.\nTo view a list of all submissions in an exercise, use\n`/exercises/<exercise_id>/submissions/`.\n\nOperations\n----------\n\n`GET /submissions/<submission_id>/`:\n    returns the details of a specific submission.\n\n`GET /submissions/<submission_id>/grader/`:\n    used by automatic graders when grading a submission.\n\n`GET /submissions/<submission_id>/re-submit/`:\n    resubmits a submission for grading.\n\n`POST /submissions/<submission_id>/tag/`:\n    tags a submission with a submission tag.\n\n- Request body:\n    - `tag_slug`: the slug of the tag to be added.\n\n`DELETE /submissions/<submission_id>/tag/`:\n    removes a submission tag from a submission.\n\n- Request body:\n    - `tag_slug`: the slug of the tag to be removed.",
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Submission"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/submissions/{submission_id}/grader/": {
+      "get": {
+        "operationId": "get_api_v2_submissions_submission_id_grader",
+        "description": "The `submissions` endpoint returns information about a single submissions\nin an exercise. This endpoint cannot be used for listing all submissions.\nTo view a list of all submissions in an exercise, use\n`/exercises/<exercise_id>/submissions/`.\n\nOperations\n----------\n\n`GET /submissions/<submission_id>/`:\n    returns the details of a specific submission.\n\n`GET /submissions/<submission_id>/grader/`:\n    used by automatic graders when grading a submission.\n\n`GET /submissions/<submission_id>/re-submit/`:\n    resubmits a submission for grading.\n\n`POST /submissions/<submission_id>/tag/`:\n    tags a submission with a submission tag.\n\n- Request body:\n    - `tag_slug`: the slug of the tag to be added.\n\n`DELETE /submissions/<submission_id>/tag/`:\n    removes a submission tag from a submission.\n\n- Request body:\n    - `tag_slug`: the slug of the tag to be removed.",
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionGrader"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "post": {
+        "operationId": "post_api_v2_submissions_submission_id_grader",
+        "description": "The `submissions` endpoint returns information about a single submissions\nin an exercise. This endpoint cannot be used for listing all submissions.\nTo view a list of all submissions in an exercise, use\n`/exercises/<exercise_id>/submissions/`.\n\nOperations\n----------\n\n`GET /submissions/<submission_id>/`:\n    returns the details of a specific submission.\n\n`GET /submissions/<submission_id>/grader/`:\n    used by automatic graders when grading a submission.\n\n`GET /submissions/<submission_id>/re-submit/`:\n    resubmits a submission for grading.\n\n`POST /submissions/<submission_id>/tag/`:\n    tags a submission with a submission tag.\n\n- Request body:\n    - `tag_slug`: the slug of the tag to be added.\n\n`DELETE /submissions/<submission_id>/tag/`:\n    removes a submission tag from a submission.\n\n- Request body:\n    - `tag_slug`: the slug of the tag to be removed.",
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionGrader"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionGrader"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionGrader"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionGrader"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/submissions/{submission_id}/files/": {
+      "get": {
+        "operationId": "get_api_v2_submissions_submission_id_files",
+        "description": "The `files` endpoint is used for downloading files sent as attachments of a\nsubmission.\n\nOperations\n----------\n\n`GET /submissions/<submission_id>/files/<submittedfile_id>`:\n    returns the details of a specific file.",
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "count",
+                    "results"
+                  ],
+                  "properties": {
+                    "count": {
+                      "type": "integer",
+                      "example": 123
+                    },
+                    "next": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=4"
+                    },
+                    "previous": {
+                      "type": "string",
+                      "nullable": true,
+                      "format": "uri",
+                      "example": "http://api.example.org/accounts/?page=2"
+                    },
+                    "results": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  }
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/submissions/{submission_id}/files/{submittedfile_id}/": {
+      "get": {
+        "operationId": "get_api_v2_submissions_submission_id_files_submittedfile_id",
+        "description": "The `files` endpoint is used for downloading files sent as attachments of a\nsubmission.\n\nOperations\n----------\n\n`GET /submissions/<submission_id>/files/<submittedfile_id>`:\n    returns the details of a specific file.",
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "submittedfile_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/get-token": {
+      "get": {
+        "operationId": "get_api_v2_get_token",
+        "description": "A view that signs a token for someone else after checking the permissions are ok.\nDefault expiration time is 1 minute, and can be at most 1 day.\n\nRelevant payload fields:\n\n- exp: expiration time. If present, either a NumericDate integer, or a string\nin ISO calendar format (expire at) or HH:MM:SS format (expire in)\n- turl/taud: taud is the public key of the target service (with whom this token\nis supposed to be used), alternatively, one can give turl which is the target's\nalias or URL known by A+.\n- permissions: list of permissions to be included.\nSee [AUTH.md](https://github.com/apluslms/a-plus/blob/master/doc/AUTH.md#permission-claims).\nFor example, [[\"instance\", 1, {\"id\": 5}]] where \"5\" is the id of the course instance.\n\nGET assumes the payload is sent as a part of a JWT token.\n\nPOST allows you to specify the payload fields in the POST parameters.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "post": {
+        "operationId": "post_api_v2_get_token",
+        "description": "A view that signs a token for someone else after checking the permissions are ok.\nDefault expiration time is 1 minute, and can be at most 1 day.\n\nRelevant payload fields:\n\n- exp: expiration time. If present, either a NumericDate integer, or a string\nin ISO calendar format (expire at) or HH:MM:SS format (expire in)\n- turl/taud: taud is the public key of the target service (with whom this token\nis supposed to be used), alternatively, one can give turl which is the target's\nalias or URL known by A+.\n- permissions: list of permissions to be included.\nSee [AUTH.md](https://github.com/apluslms/a-plus/blob/master/doc/AUTH.md#permission-claims).\nFor example, [[\"instance\", 1, {\"id\": 5}]] where \"5\" is the id of the course instance.\n\nGET assumes the payload is sent as a part of a JWT token.\n\nPOST allows you to specify the payload fields in the POST parameters.",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {}
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {}
+            },
+            "multipart/form-data": {
+              "schema": {}
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/me": {
+      "get": {
+        "operationId": "get_api_v2_me",
+        "description": "The `me` endpoint returns information about the current user.\n\nOperations\n----------\n\n`GET /me/`:\n    returns the details of the current user.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/statistics/": {
+      "get": {
+        "operationId": "get_api_v2_statistics",
+        "description": "Returns submission statistics for the entire system, over a given time window.\n\nReturns the following attributes:\n\n- `submission_count`: total number of submissions.\n- `submitters`: number of users submitting.\n\nOperations\n----------\n\n`GET /statistics/`:\n    returns the statistics for the system.\n\n- URL parameters:\n    - `endtime`: date and time in ISO 8601 format indicating the end point\n      of time window we are interested in. Default: now.\n    - `starttime`: date and time in ISO 8601 format indicating the start point\n      of time window we are interested in. Default: one day before endtime",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Statistics"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/statistics/": {
+      "get": {
+        "operationId": "get_api_v2_courses_course_id_statistics",
+        "description": "Returns submission statistics for a course, over a given time window.\n\nReturns the following attributes:\n\n- `submission_count`: total number of submissions.\n- `submitters`: number of users submitting.\n\nOperations\n----------\n\n`GET /courses/<course_id>/statistics/`:\n    returns the statistics for the given course.\n\n- URL parameters:\n    - `endtime`: date and time in ISO 8601 format indicating the end point\n      of time window we are interested in. Default: now.\n    - `starttime`: date and time in ISO 8601 format indicating the start point\n      of time window we are interested in. Default: one day before endtime",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseStatistics"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/statistics/": {
+      "get": {
+        "operationId": "get_api_v2_exercises_exercise_id_statistics",
+        "description": "Returns submission statistics for an exercise, over a given time window.\n\nReturns the following attributes:\n\n- `submission_count`: total number of submissions.\n- `submitters`: number of users submitting.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/statistics/`:\n    returns the statistics for the given exercise.\n\n- URL parameters:\n    - `endtime`: date and time in ISO 8601 format indicating the end point\n      of time window we are interested in. Default: now.\n    - `starttime`: date and time in ISO 8601 format indicating the start point\n      of time window we are interested in. Default: one day before endtime",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExerciseStatistics"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/notify_update/": {
+      "post": {
+        "operationId": "post_api_v2_courses_course_id_notify_update",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseWrite"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/send_mail/": {
+      "post": {
+        "operationId": "post_api_v2_courses_course_id_send_mail",
+        "description": "The `courses` endpoint returns information about all course instances.\n\nOperations\n----------\n\n`GET /courses/`:\n    returns a list of all courses.\n\n`GET /courses/<course_id>/`:\n    returns the details of a specific course.\n\n`POST /courses/`:\n    creates a new course instance. Requires admin privileges. Following attributes can be given:\n\n* `name`: Name of the course.\n* `code`: Course code. If a course with this code does not exist, it will be created.\n* `course_url`: URL slug for the course\n* `instance_name`\n* `url`: course instance URL. If this is not given, the URL will be generated from instance_name.\n* `language`\n* `starting_time`\n* `ending_time`\n* `visible_to_students`\n* `configure_url`: the configuration URL for MOOC grader.\n* `teachers`: list of teacher usernames on the course.\n  If given user does not exist, the user will be created.\n  Only the username of created user is set.\n  If user logs in using external authentication service such as Haka,\n  the other user attributes will be updated on first login.\n\n`PUT /courses/<course_id>/`:\n    modifies the attributes of a specific course. Attributes that are modified:\n    `instance_name`, `url`, `language`, `starting_time`, `ending_time`,\n    `visible_to_students`, `configure_url`, `teachers`.\n    Only the course instance data can be modified. Course code, name, or URL\n    cannot be modified using this API. Requires admin privileges.\n\n`POST /courses/<course_id>/notify_update/`:\n    triggers a course update and returns JSON {errors: <error list>, success: <bool>}.\n    Following attributes can be given:\n\n* `email_on_error`: whether to send an email to instance staff on error\n\n`POST /courses/<course_id>/send_mail/`:\n    sends an email to course instance's technical contacts (or teachers if\n    there are no technical contacts). Empty response on success, otherwise\n    returns the error. Following attributes can be given:\n\n* `subject`: email subject\n* `message`: email body\n\n`GET /courses/current-teachers/`:\n    returns users who are teachers in at least one currently running course.\n    Optional query parameter:\n\n* `ended_within_days`: include teachers from courses that ended within\n    the given number of days (and ongoing/future courses). Example: `365`.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/CourseWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseWrite"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/courses/{course_id}/lineitems/{id}/scores/": {
+      "post": {
+        "operationId": "post_api_v2_courses_course_id_lineitems_id_scores",
+        "description": "ViewSet for reading LTI line items associated with a given course.\nAlso implements 'scores' action for posting grades related to a line item.",
+        "parameters": [
+          {
+            "name": "course_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LTILineItem"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/LTILineItem"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/LTILineItem"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LTILineItem"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/exercises/{exercise_id}/submissions/submit/": {
+      "post": {
+        "operationId": "post_api_v2_exercises_exercise_id_submissions_submit",
+        "description": "The `submissions` endpoint returns information about the submissions of an\nexercise. Can also be used for creating new submissions and submitting them\nfor grading.\n\nOperations\n----------\n\n`GET /exercises/<exercise_id>/submissions/`:\n    returns a list of all submissions.\n\n`GET /exercises/<exercise_id>/submissions/<user_id>/`:\n    returns a list of a specific user's submissions.\n\n`GET /exercises/<exercise_id>/submissions/me/`:\n    returns a list of the current user's submissions.\n\n`POST /exercises/<exercise_id>/submissions/`:\n    creates a new submission. Only for teachers.\n\n- Body data:\n    - One of:\n        - `students`\n        - `students_by_user_id`\n        - `students_by_student_id`\n        - `students_by_email`\n    - `feedback`\n    - `assistant_feedback`\n    - `grading_data`\n    - `points`\n    - `submission_time`\n\n`POST /exercises/<exercise_id>/submissions/submit/`:\n    submits a new submission for grading. Students are allowed to use this\n    endpoint. The body data is used as submission data and files may be\n    uploaded too.\n\n- Body data:\n    - `_aplus_group`: group id when submitting as a group\n    - Remaining key-value pairs match questions and their answers.",
+        "parameters": [
+          {
+            "name": "exercise_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionBrief"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionBrief"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/SubmissionBrief"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubmissionBrief"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/submissions/{submission_id}/tag/": {
+      "post": {
+        "operationId": "post_api_v2_submissions_submission_id_tag",
+        "description": "Add or remove a tag from a submission.\n\nRequest data should include 'tag_slug' parameter.",
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Submission"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Submission"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Submission"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Submission"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      },
+      "delete": {
+        "operationId": "delete_api_v2_submissions_submission_id_tag",
+        "description": "Add or remove a tag from a submission.\n\nRequest data should include 'tag_slug' parameter.",
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/submissions/{submission_id}/re-submit/": {
+      "post": {
+        "operationId": "post_api_v2_submissions_submission_id_re_submit",
+        "description": "The `submissions` endpoint returns information about a single submissions\nin an exercise. This endpoint cannot be used for listing all submissions.\nTo view a list of all submissions in an exercise, use\n`/exercises/<exercise_id>/submissions/`.\n\nOperations\n----------\n\n`GET /submissions/<submission_id>/`:\n    returns the details of a specific submission.\n\n`GET /submissions/<submission_id>/grader/`:\n    used by automatic graders when grading a submission.\n\n`GET /submissions/<submission_id>/re-submit/`:\n    resubmits a submission for grading.\n\n`POST /submissions/<submission_id>/tag/`:\n    tags a submission with a submission tag.\n\n- Request body:\n    - `tag_slug`: the slug of the tag to be added.\n\n`DELETE /submissions/<submission_id>/tag/`:\n    removes a submission tag from a submission.\n\n- Request body:\n    - `tag_slug`: the slug of the tag to be removed.",
+        "parameters": [
+          {
+            "name": "submission_id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Submission"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Submission"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Submission"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/vnd.aplus+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Submission"
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    },
+    "/api/v2/lti-outcomes": {
+      "post": {
+        "operationId": "post_api_v2_lti_outcomes",
+        "description": "View that responds to LTI 1.1 Basic Outcomes Service requests that\nare posted by the Tool Provider to A+ in order to return the scores of submissions.",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/xml": {
+              "schema": {}
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/xml": {
+                "schema": {}
+              }
+            },
+            "description": ""
+          }
+        },
+        "tags": [
+          "api"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserBrief": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "username": {
+            "type": "string"
+          },
+          "student_id": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 25
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "is_external": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "username": {
+            "type": "string"
+          },
+          "student_id": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 25
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "is_external": {
+            "type": "string",
+            "readOnly": true
+          },
+          "enrolled_courses": {
+            "type": "string",
+            "readOnly": true
+          },
+          "staff_courses": {
+            "type": "string",
+            "readOnly": true
+          },
+          "teacher_courses": {
+            "type": "string",
+            "readOnly": true
+          },
+          "assistant_courses": {
+            "type": "string",
+            "readOnly": true
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "full_name",
+          "first_name",
+          "last_name"
+        ]
+      },
+      "CourseBrief": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "html_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "instance_name": {
+            "type": "string",
+            "maxLength": 255
+          }
+        },
+        "required": [
+          "code",
+          "name",
+          "instance_name"
+        ]
+      },
+      "Course": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "html_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "instance_name": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "language": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "starting_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ending_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "visible_to_students": {
+            "type": "boolean"
+          },
+          "group_work_allowed": {
+            "type": "boolean"
+          },
+          "exercises": {
+            "type": "string",
+            "readOnly": true
+          },
+          "tree": {
+            "type": "string",
+            "readOnly": true
+          },
+          "points": {
+            "type": "string",
+            "readOnly": true
+          },
+          "students": {
+            "type": "string",
+            "readOnly": true
+          },
+          "taggings": {
+            "type": "string",
+            "readOnly": true
+          },
+          "usertags": {
+            "type": "string",
+            "readOnly": true
+          },
+          "my_points": {
+            "type": "string",
+            "readOnly": true
+          },
+          "my_data": {
+            "type": "string",
+            "readOnly": true
+          },
+          "data": {
+            "type": "string",
+            "readOnly": true
+          },
+          "pending_submissions_data": {
+            "type": "string",
+            "readOnly": true
+          },
+          "aggregate_data": {
+            "type": "string",
+            "readOnly": true
+          },
+          "results_data": {
+            "type": "string",
+            "readOnly": true
+          },
+          "best_results_data": {
+            "type": "string",
+            "readOnly": true
+          },
+          "groups": {
+            "type": "string",
+            "readOnly": true
+          },
+          "my_groups": {
+            "type": "string",
+            "readOnly": true
+          },
+          "news": {
+            "type": "string",
+            "readOnly": true
+          },
+          "statistics": {
+            "type": "string",
+            "readOnly": true
+          },
+          "image": {
+            "type": "string",
+            "format": "binary",
+            "nullable": true
+          }
+        },
+        "required": [
+          "code",
+          "name",
+          "instance_name",
+          "starting_time",
+          "ending_time"
+        ]
+      },
+      "StudentBrief": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "username": {
+            "type": "string"
+          },
+          "student_id": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 25
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "is_external": {
+            "type": "string",
+            "readOnly": true
+          },
+          "tag_slugs": {
+            "type": "string",
+            "readOnly": true
+          },
+          "summary_html": {
+            "type": "string",
+            "readOnly": true
+          },
+          "points": {
+            "type": "string",
+            "readOnly": true
+          },
+          "data": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "CourseUsertag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "slug": {
+            "type": "string",
+            "description": "Slug key for tag. If left blank, one is created from name",
+            "maxLength": 20,
+            "pattern": "^[-a-zA-Z0-9_]+$"
+          },
+          "name": {
+            "type": "string",
+            "description": "Display name for tag",
+            "maxLength": 20
+          },
+          "description": {
+            "type": "string",
+            "description": "Describe the usage or meaning of this tag",
+            "maxLength": 155
+          },
+          "visible_to_students": {
+            "type": "boolean"
+          },
+          "color": {
+            "type": "string",
+            "description": "Color that is used as background for this tag",
+            "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+            "maxLength": 7
+          },
+          "font_color": {
+            "type": "string",
+            "readOnly": true
+          },
+          "font_white": {
+            "type": "string",
+            "readOnly": true
+          },
+          "taggings": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "slug",
+          "name"
+        ]
+      },
+      "CourseUsertaggings": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "username": {
+                "type": "string"
+              },
+              "student_id": {
+                "type": "string",
+                "nullable": true,
+                "maxLength": 25
+              },
+              "email": {
+                "type": "string"
+              },
+              "full_name": {
+                "type": "string"
+              },
+              "is_external": {
+                "type": "string",
+                "readOnly": true
+              }
+            }
+          },
+          "tag": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "slug": {
+                "type": "string",
+                "description": "Slug key for tag. If left blank, one is created from name",
+                "maxLength": 20,
+                "pattern": "^[-a-zA-Z0-9_]+$"
+              }
+            },
+            "required": [
+              "slug"
+            ]
+          }
+        },
+        "required": [
+          "user",
+          "tag"
+        ]
+      },
+      "UserPoints": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "username": {
+            "type": "string"
+          },
+          "student_id": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 25
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "is_external": {
+            "type": "string",
+            "readOnly": true
+          },
+          "tags": {
+            "type": "string",
+            "readOnly": true
+          },
+          "role": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "CourseStudentGroupBrief": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "readOnly": true
+                },
+                "url": {
+                  "type": "string",
+                  "readOnly": true
+                },
+                "full_name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "members"
+        ]
+      },
+      "CourseStudentGroup": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "url": {
+                  "type": "string",
+                  "readOnly": true
+                },
+                "username": {
+                  "type": "string"
+                },
+                "student_id": {
+                  "type": "string",
+                  "nullable": true,
+                  "maxLength": 25
+                },
+                "email": {
+                  "type": "string"
+                },
+                "full_name": {
+                  "type": "string"
+                },
+                "is_external": {
+                  "type": "string",
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "members"
+        ]
+      },
+      "CourseNews": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "audience": {
+            "enum": [
+              1,
+              2,
+              3
+            ],
+            "type": "integer",
+            "minimum": -9223372036854775808,
+            "maximum": 9223372036854775807
+          },
+          "publish": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "language": {
+            "enum": [
+              "-",
+              "en",
+              "fi",
+              "sv"
+            ],
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "pin": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "body"
+        ]
+      },
+      "LTILineItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "scoreMaximum": {
+            "type": "integer"
+          },
+          "label": {
+            "type": "string"
+          },
+          "startDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "resourceLinkId": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": [
+          "scoreMaximum",
+          "label",
+          "startDateTime",
+          "endDateTime",
+          "resourceLinkId"
+        ]
+      },
+      "Exercise": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "html_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "max_points": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": 0,
+            "format": "int64"
+          },
+          "max_submissions": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": 0,
+            "format": "int64"
+          },
+          "hierarchical_name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "difficulty": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "course": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "html_url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "code": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "instance_name": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": [
+              "code",
+              "name",
+              "instance_name"
+            ]
+          },
+          "is_submittable": {
+            "type": "string",
+            "readOnly": true
+          },
+          "post_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "consecutive_order": {
+            "type": "string",
+            "readOnly": true
+          },
+          "parent_name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "exercise_info": {
+            "type": "object"
+          },
+          "templates": {
+            "type": "string",
+            "description": "LEARNING_OBJECT_TEMPLATE_URLS_HELPTEXT"
+          },
+          "submissions": {
+            "type": "string",
+            "readOnly": true
+          },
+          "my_submissions": {
+            "type": "string",
+            "readOnly": true
+          },
+          "my_stats": {
+            "type": "string",
+            "readOnly": true
+          },
+          "statistics": {
+            "type": "string",
+            "readOnly": true
+          },
+          "status": {
+            "enum": [
+              "enrollment",
+              "enrollment_ext",
+              "hidden",
+              "maintenance",
+              "ready",
+              "unlisted"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "display_name",
+          "name",
+          "course",
+          "exercise_info"
+        ]
+      },
+      "ExerciseGrader": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "exercise": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "html_url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "display_name": {
+                "type": "string"
+              },
+              "max_points": {
+                "type": "integer",
+                "maximum": 9223372036854775807,
+                "minimum": 0,
+                "format": "int64"
+              },
+              "max_submissions": {
+                "type": "integer",
+                "maximum": 9223372036854775807,
+                "minimum": 0,
+                "format": "int64"
+              },
+              "hierarchical_name": {
+                "type": "string",
+                "readOnly": true
+              },
+              "difficulty": {
+                "type": "string",
+                "maxLength": 32
+              }
+            },
+            "required": [
+              "display_name"
+            ]
+          }
+        },
+        "required": [
+          "exercise"
+        ]
+      },
+      "SubmissionBrief": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "submission_time": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "grade": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "SubmitterStatsBrief": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "username": {
+            "type": "string"
+          },
+          "student_id": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 25
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "is_external": {
+            "type": "string",
+            "readOnly": true
+          },
+          "stats": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "SubmitterStats": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "username": {
+            "type": "string"
+          },
+          "student_id": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 25
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "is_external": {
+            "type": "string",
+            "readOnly": true
+          },
+          "tags": {
+            "type": "string",
+            "readOnly": true
+          },
+          "role": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "Submission": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "submission_time": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "grade": {
+            "type": "string",
+            "readOnly": true
+          },
+          "html_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "exercise": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "html_url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "display_name": {
+                "type": "string"
+              },
+              "max_points": {
+                "type": "integer",
+                "maximum": 9223372036854775807,
+                "minimum": 0,
+                "format": "int64"
+              },
+              "max_submissions": {
+                "type": "integer",
+                "maximum": 9223372036854775807,
+                "minimum": 0,
+                "format": "int64"
+              },
+              "hierarchical_name": {
+                "type": "string",
+                "readOnly": true
+              },
+              "difficulty": {
+                "type": "string",
+                "maxLength": 32
+              }
+            },
+            "required": [
+              "display_name"
+            ]
+          },
+          "submitters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "url": {
+                  "type": "string",
+                  "readOnly": true
+                },
+                "username": {
+                  "type": "string"
+                },
+                "student_id": {
+                  "type": "string",
+                  "nullable": true,
+                  "maxLength": 25
+                },
+                "email": {
+                  "type": "string"
+                },
+                "full_name": {
+                  "type": "string"
+                },
+                "is_external": {
+                  "type": "string",
+                  "readOnly": true
+                }
+              }
+            }
+          },
+          "submission_data": {
+            "type": "object"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "readOnly": true
+                },
+                "url": {
+                  "type": "string",
+                  "readOnly": true
+                },
+                "filename": {
+                  "type": "string",
+                  "readOnly": true
+                },
+                "param_name": {
+                  "type": "string",
+                  "maxLength": 128
+                }
+              },
+              "required": [
+                "param_name"
+              ]
+            }
+          },
+          "status": {
+            "enum": [
+              "error",
+              "initialized",
+              "invalidated",
+              "ready",
+              "rejected",
+              "unofficial",
+              "waiting"
+            ],
+            "type": "string"
+          },
+          "late_penalty_applied": {
+            "type": "number",
+            "nullable": true
+          },
+          "grading_time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "grader": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "username": {
+                "type": "string"
+              },
+              "student_id": {
+                "type": "string",
+                "nullable": true,
+                "maxLength": 25
+              },
+              "email": {
+                "type": "string"
+              },
+              "full_name": {
+                "type": "string"
+              },
+              "is_external": {
+                "type": "string",
+                "readOnly": true
+              }
+            }
+          },
+          "feedback": {
+            "type": "string",
+            "readOnly": true
+          },
+          "assistant_feedback": {
+            "type": "string",
+            "readOnly": true
+          },
+          "grading_data": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "exercise",
+          "submitters",
+          "submission_data",
+          "files",
+          "grader"
+        ]
+      },
+      "SubmissionGrader": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "submission": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "submission_time": {
+                "type": "string",
+                "format": "date-time",
+                "readOnly": true
+              },
+              "grade": {
+                "type": "string",
+                "readOnly": true
+              },
+              "html_url": {
+                "type": "string",
+                "readOnly": true
+              }
+            }
+          },
+          "exercise": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "readOnly": true
+              },
+              "url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "html_url": {
+                "type": "string",
+                "readOnly": true
+              },
+              "display_name": {
+                "type": "string"
+              },
+              "max_points": {
+                "type": "integer",
+                "maximum": 9223372036854775807,
+                "minimum": 0,
+                "format": "int64"
+              },
+              "max_submissions": {
+                "type": "integer",
+                "maximum": 9223372036854775807,
+                "minimum": 0,
+                "format": "int64"
+              },
+              "hierarchical_name": {
+                "type": "string",
+                "readOnly": true
+              },
+              "difficulty": {
+                "type": "string",
+                "maxLength": 32
+              }
+            },
+            "required": [
+              "display_name"
+            ]
+          },
+          "grading_data": {
+            "type": "string"
+          },
+          "is_graded": {
+            "type": "string",
+            "readOnly": true
+          },
+          "feedback_response_seen": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "submission",
+          "exercise"
+        ]
+      },
+      "Statistics": {
+        "type": "object",
+        "properties": {
+          "starttime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endtime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "submission_count": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "submitters": {
+            "type": "integer",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "starttime",
+          "endtime"
+        ]
+      },
+      "CourseStatistics": {
+        "type": "object",
+        "properties": {
+          "starttime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endtime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "submission_count": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "submitters": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "course_id": {
+            "type": "integer",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "starttime",
+          "endtime"
+        ]
+      },
+      "ExerciseStatistics": {
+        "type": "object",
+        "properties": {
+          "starttime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endtime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "submission_count": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "submitters": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "exercise_id": {
+            "type": "integer",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "starttime",
+          "endtime"
+        ]
+      },
+      "CourseWrite": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "url": {
+            "type": "string",
+            "description": "COURSE_INSTANCE_URL_IDENTIFIER_HELPTEXT",
+            "pattern": "^\\w[\\w\\-\\.]*$",
+            "maxLength": 255
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "course_url": {
+            "type": "string"
+          },
+          "instance_name": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "language": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "starting_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ending_time": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "visible_to_students": {
+            "type": "boolean"
+          },
+          "group_work_allowed": {
+            "type": "boolean"
+          },
+          "configure_url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 200
+          },
+          "teachers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "url",
+          "code",
+          "name",
+          "course_url",
+          "instance_name",
+          "starting_time",
+          "ending_time",
+          "teachers"
+        ]
+      }
+    }
+  }
+}

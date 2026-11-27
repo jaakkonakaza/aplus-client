@@ -1,0 +1,307 @@
+public final class fi/aalto/cs/aplus/courseconfig/ConfigVersion : java/lang/Comparable {
+	public static final field Companion Lfi/aalto/cs/aplus/courseconfig/ConfigVersion$Companion;
+	public fun <init> (II)V
+	public fun compareTo (Lfi/aalto/cs/aplus/courseconfig/ConfigVersion;)I
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun copy (II)Lfi/aalto/cs/aplus/courseconfig/ConfigVersion;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/ConfigVersion;IIILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/ConfigVersion;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMajor ()I
+	public final fun getMinor ()I
+	public fun hashCode ()I
+	public static final fun parse (Ljava/lang/String;)Lfi/aalto/cs/aplus/courseconfig/ConfigVersion;
+	public static final fun parseOrNull (Ljava/lang/String;)Lfi/aalto/cs/aplus/courseconfig/ConfigVersion;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/ConfigVersion$Companion {
+	public final fun parse (Ljava/lang/String;)Lfi/aalto/cs/aplus/courseconfig/ConfigVersion;
+	public final fun parseOrNull (Ljava/lang/String;)Lfi/aalto/cs/aplus/courseconfig/ConfigVersion;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/courseconfig/CourseConfig;
+	public static final fun parse (Ljava/lang/String;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document;
+	public static final fun validate (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document;)V
+	public static final fun validationErrors (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document;)Ljava/util/List;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks {
+	public static final field Companion Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;Ljava/util/List;ILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPostDownloadModule ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Document {
+	public static final field Companion Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;Ljava/util/List;Ljava/util/Map;Ljava/util/List;Ljava/util/List;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;Ljava/util/List;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;Ljava/util/List;Ljava/util/Map;Ljava/util/List;Ljava/util/List;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;Ljava/util/List;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component10 ()Ljava/util/Map;
+	public final fun component11 ()Ljava/util/List;
+	public final fun component12 ()Ljava/util/List;
+	public final fun component13 ()Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;
+	public final fun component14 ()Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;
+	public final fun component15 ()Ljava/util/List;
+	public final fun component16 ()Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;
+	public final fun component17 ()Z
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/util/List;
+	public final fun component4 ()Ljava/util/Map;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/util/List;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;
+	public final fun component9 ()Ljava/util/List;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;Ljava/util/List;Ljava/util/Map;Ljava/util/List;Ljava/util/List;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;Ljava/util/List;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;Z)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;Ljava/util/Map;Ljava/lang/String;Ljava/util/List;Ljava/lang/String;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;Ljava/util/List;Ljava/util/Map;Ljava/util/List;Ljava/util/List;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;Ljava/util/List;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;ZILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAPlusUrl ()Ljava/lang/String;
+	public final fun getAlwaysShowGroups ()Z
+	public final fun getAutoInstall ()Ljava/util/List;
+	public final fun getCallbacks ()Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Callbacks;
+	public final fun getExerciseModules ()Ljava/util/Map;
+	public final fun getGrading ()Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;
+	public final fun getHiddenElements ()Ljava/util/List;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getLanguages ()Ljava/util/List;
+	public final fun getModules ()Ljava/util/List;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getOptionalCategories ()Ljava/util/List;
+	public final fun getRequiredPlugins ()Ljava/util/List;
+	public final fun getResources ()Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;
+	public final fun getScalaRepl ()Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;
+	public final fun getVersion ()Ljava/lang/String;
+	public final fun getVmOptions ()Ljava/util/Map;
+	public fun hashCode ()I
+	public final fun toJson ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/courseconfig/CourseConfig$Document$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Document;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Document$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$GradeProgress {
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$GradeProgress;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$GradeProgress;Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;ILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$GradeProgress;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getGrade ()Ljava/lang/String;
+	public final fun getMaxOfNext ()Ljava/util/Map;
+	public final fun getPointsUntilNext ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Grading {
+	public static final field Companion Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading$Companion;
+	public static final field O1 Ljava/lang/String;
+	public static final field TOTAL Ljava/lang/String;
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getPoints ()Ljava/util/Map;
+	public final fun getStyle ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun progress (Ljava/util/Map;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$GradeProgress;
+	public fun toString ()Ljava/lang/String;
+	public final fun validate ()V
+}
+
+public final synthetic class fi/aalto/cs/aplus/courseconfig/CourseConfig$Grading$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Grading;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Grading$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Module {
+	public static final field Companion Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Module$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Z
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Module;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Module;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Module;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getChangelog ()Ljava/lang/String;
+	public final fun getLanguage ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public final fun getSbt ()Z
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun getVersion ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/courseconfig/CourseConfig$Module$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Module$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Module;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Module;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Module$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin {
+	public static final field Companion Lfi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/String;
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$RequiredPlugin$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Resources {
+	public static final field Companion Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCustomProperties ()Ljava/lang/String;
+	public final fun getFeedbackCss ()Ljava/lang/String;
+	public final fun getIdeSettings ()Ljava/lang/String;
+	public final fun getIdeSettingsLinux ()Ljava/lang/String;
+	public final fun getIdeSettingsMac ()Ljava/lang/String;
+	public final fun getIdeSettingsWindows ()Ljava/lang/String;
+	public final fun getProjectSettings ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/courseconfig/CourseConfig$Resources$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$Resources;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$Resources$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl {
+	public static final field Companion Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Map;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/util/Map;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/util/Map;Ljava/lang/String;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;
+	public static synthetic fun copy$default (Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;Ljava/util/Map;Ljava/lang/String;ILjava/lang/Object;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArguments ()Ljava/lang/String;
+	public final fun getInitialCommands ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final synthetic class fi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl$$serializer : kotlinx/serialization/internal/GeneratedSerializer {
+	public static final field INSTANCE Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl$$serializer;
+	public final fun childSerializers ()[Lkotlinx/serialization/KSerializer;
+	public final fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;
+	public synthetic fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public final fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public final fun serialize (Lkotlinx/serialization/encoding/Encoder;Lfi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl;)V
+	public synthetic fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+	public fun typeParametersSerializers ()[Lkotlinx/serialization/KSerializer;
+}
+
+public final class fi/aalto/cs/aplus/courseconfig/CourseConfig$ScalaRepl$Companion {
+	public final fun serializer ()Lkotlinx/serialization/KSerializer;
+}
+

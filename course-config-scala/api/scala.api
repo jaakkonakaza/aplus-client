@@ -1,0 +1,192 @@
+public final class fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package {
+  public static java.lang.String name(fi.aalto.cs.aplus.courseconfig.CourseConfig$Module);
+  public static <A> A nullable(java.lang.Object);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$ MODULE$;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Document$ Document;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Module$ Module;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Resources$ Resources;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$RequiredPlugin$ RequiredPlugin;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$ScalaRepl$ ScalaRepl;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Callbacks$ Callbacks;
+  public static {};
+  public <A> A nullable(java.lang.Object);
+  public java.lang.String name(fi.aalto.cs.aplus.courseconfig.CourseConfig$Module);
+  public static final scala.Tuple2 fi$aalto$cs$aplus$courseconfig$scala$CourseConfig$package$Document$$$_$_$$anonfun$1(scala.Tuple2);
+  public static java.lang.Long fi$aalto$cs$aplus$courseconfig$scala$CourseConfig$package$Document$$$_$_$$anonfun$adapted$1(java.lang.Object);
+  public static final scala.Tuple2 fi$aalto$cs$aplus$courseconfig$scala$CourseConfig$package$ScalaRepl$$$_$apply$$anonfun$1(scala.Tuple2);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Callbacks$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Callbacks$ MODULE$;
+  public fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Callbacks$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$Callbacks apply(scala.collection.immutable.Seq<java.lang.String>);
+  public scala.collection.immutable.Seq<java.lang.String> apply$default$1();
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Document$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Document$ MODULE$;
+  public fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Document$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$Document apply(java.lang.String, java.lang.String, scala.collection.immutable.Seq<fi.aalto.cs.aplus.courseconfig.CourseConfig$Module>, scala.collection.immutable.Map<java.lang.Object, scala.collection.immutable.Map<java.lang.String, java.lang.String>>, java.io.Serializable, scala.collection.immutable.Seq<java.lang.String>, java.lang.String, java.lang.Object, scala.collection.immutable.Seq<fi.aalto.cs.aplus.courseconfig.CourseConfig$RequiredPlugin>, scala.collection.immutable.Map<java.lang.String, java.lang.String>, scala.collection.immutable.Seq<java.lang.String>, scala.collection.immutable.Seq<java.lang.String>, java.lang.Object, java.lang.Object, scala.collection.immutable.Seq<java.lang.Object>, java.lang.Object, boolean);
+  public scala.collection.immutable.Seq<fi.aalto.cs.aplus.courseconfig.CourseConfig$Module> apply$default$3();
+  public scala.collection.immutable.Map<java.lang.Object, scala.collection.immutable.Map<java.lang.String, java.lang.String>> apply$default$4();
+  public java.io.Serializable apply$default$5();
+  public scala.collection.immutable.Seq<java.lang.String> apply$default$6();
+  public java.lang.String apply$default$7();
+  public java.lang.Object apply$default$8();
+  public scala.collection.immutable.Seq<fi.aalto.cs.aplus.courseconfig.CourseConfig$RequiredPlugin> apply$default$9();
+  public scala.collection.immutable.Map<java.lang.String, java.lang.String> apply$default$10();
+  public scala.collection.immutable.Seq<java.lang.String> apply$default$11();
+  public scala.collection.immutable.Seq<java.lang.String> apply$default$12();
+  public java.lang.Object apply$default$13();
+  public java.lang.Object apply$default$14();
+  public scala.collection.immutable.Seq<java.lang.Object> apply$default$15();
+  public java.lang.Object apply$default$16();
+  public boolean apply$default$17();
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Module$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Module$ MODULE$;
+  public fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Module$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$Module apply(java.lang.String, java.lang.String, java.lang.String, java.io.Serializable, java.io.Serializable, boolean);
+  public java.lang.String apply$default$3();
+  public java.io.Serializable apply$default$4();
+  public java.io.Serializable apply$default$5();
+  public boolean apply$default$6();
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$RequiredPlugin$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$RequiredPlugin$ MODULE$;
+  public fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$RequiredPlugin$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$RequiredPlugin apply(java.lang.String, java.lang.String);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Resources$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Resources$ MODULE$;
+  public fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$Resources$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$Resources apply(java.io.Serializable, java.io.Serializable, java.io.Serializable, java.io.Serializable, java.io.Serializable, java.io.Serializable, java.io.Serializable);
+  public java.io.Serializable apply$default$1();
+  public java.io.Serializable apply$default$2();
+  public java.io.Serializable apply$default$3();
+  public java.io.Serializable apply$default$4();
+  public java.io.Serializable apply$default$5();
+  public java.io.Serializable apply$default$6();
+  public java.io.Serializable apply$default$7();
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$ScalaRepl$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$ScalaRepl$ MODULE$;
+  public fi.aalto.cs.aplus.courseconfig.scala.CourseConfig$package$ScalaRepl$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$ScalaRepl apply(scala.collection.immutable.Map<java.lang.String, scala.collection.immutable.Seq<java.lang.String>>, java.io.Serializable);
+  public scala.collection.immutable.Map<java.lang.String, scala.collection.immutable.Seq<java.lang.String>> apply$default$1();
+  public java.io.Serializable apply$default$2();
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package {
+  public static scala.Option<fi.aalto.cs.aplus.courseconfig.CourseConfig$GradeProgress> progress(fi.aalto.cs.aplus.courseconfig.CourseConfig$Grading, scala.collection.immutable.Map<java.lang.String, java.lang.Object>);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$ MODULE$;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$ Grading;
+  public static {};
+  public scala.Option<fi.aalto.cs.aplus.courseconfig.CourseConfig$GradeProgress> progress(fi.aalto.cs.aplus.courseconfig.CourseConfig$Grading, scala.collection.immutable.Map<java.lang.String, java.lang.Object>);
+  public static final scala.Tuple2 fi$aalto$cs$aplus$courseconfig$scala$Grading$package$Grading$O1$$$_$apply$$anonfun$1(fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold);
+  public static final scala.Tuple2 fi$aalto$cs$aplus$courseconfig$scala$Grading$package$Grading$Total$$$_$apply$$anonfun$2(fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold);
+  public static final java.lang.String fi$aalto$cs$aplus$courseconfig$scala$Grading$package$Grading$$$_$create$$anonfun$1(scala.Tuple2);
+  public static final java.lang.Object fi$aalto$cs$aplus$courseconfig$scala$Grading$package$Grading$$$_$create$$anonfun$2();
+  public static final scala.Tuple2 fi$aalto$cs$aplus$courseconfig$scala$Grading$package$Grading$$$_$_$$anonfun$1(scala.Tuple2);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$ MODULE$;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$ O1;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$ Total;
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$Grading fi$aalto$cs$aplus$courseconfig$scala$Grading$package$Grading$$$create(java.lang.String, scala.collection.immutable.Seq<scala.Tuple2<java.lang.String, scala.collection.immutable.Map<java.lang.String, java.lang.Object>>>);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$ MODULE$;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold$ Threshold;
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$Grading apply(scala.collection.immutable.Seq<fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold>);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold implements scala.Product, java.io.Serializable {
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold(java.lang.String, int, int, int);
+  public scala.collection.Iterator<java.lang.Object> productIterator();
+  public scala.collection.Iterator<java.lang.String> productElementNames();
+  public int hashCode();
+  public boolean equals(java.lang.Object);
+  public java.lang.String toString();
+  public boolean canEqual(java.lang.Object);
+  public int productArity();
+  public java.lang.String productPrefix();
+  public java.lang.Object productElement(int);
+  public java.lang.String productElementName(int);
+  public java.lang.String grade();
+  public int a();
+  public int b();
+  public int c();
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold copy(java.lang.String, int, int, int);
+  public java.lang.String copy$default$1();
+  public int copy$default$2();
+  public int copy$default$3();
+  public int copy$default$4();
+  public java.lang.String _1();
+  public int _2();
+  public int _3();
+  public int _4();
+  public static fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold apply(java.lang.String, int, int, int);
+  public static fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold fromProduct(scala.Product);
+  public static fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold unapply(fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold$ implements scala.deriving.Mirror$Product {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold$ MODULE$;
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold apply(java.lang.String, int, int, int);
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold unapply(fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold);
+  public java.lang.String toString();
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$O1$Threshold fromProduct(scala.Product);
+  public java.lang.Object fromProduct(scala.Product);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$ {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$ MODULE$;
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold$ Threshold;
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.CourseConfig$Grading apply(scala.collection.immutable.Seq<fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold>);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold implements scala.Product, java.io.Serializable {
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold(java.lang.String, int);
+  public scala.collection.Iterator<java.lang.Object> productIterator();
+  public scala.collection.Iterator<java.lang.String> productElementNames();
+  public int hashCode();
+  public boolean equals(java.lang.Object);
+  public java.lang.String toString();
+  public boolean canEqual(java.lang.Object);
+  public int productArity();
+  public java.lang.String productPrefix();
+  public java.lang.Object productElement(int);
+  public java.lang.String productElementName(int);
+  public java.lang.String grade();
+  public int points();
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold copy(java.lang.String, int);
+  public java.lang.String copy$default$1();
+  public int copy$default$2();
+  public java.lang.String _1();
+  public int _2();
+  public static fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold apply(java.lang.String, int);
+  public static fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold fromProduct(scala.Product);
+  public static fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold unapply(fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold);
+}
+public final class fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold$ implements scala.deriving.Mirror$Product {
+  public static final fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold$ MODULE$;
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold$();
+  public static {};
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold apply(java.lang.String, int);
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold unapply(fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold);
+  public java.lang.String toString();
+  public fi.aalto.cs.aplus.courseconfig.scala.Grading$package$Grading$Total$Threshold fromProduct(scala.Product);
+  public java.lang.Object fromProduct(scala.Product);
+}
